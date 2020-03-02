@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using VinaC2C.Data.Context;
 
 namespace VinaC2C.MVC
 {
@@ -23,6 +24,7 @@ namespace VinaC2C.MVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<VinaC2CContext>();
             services.AddControllersWithViews();
         }
 

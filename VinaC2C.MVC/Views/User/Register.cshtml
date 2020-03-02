@@ -1,0 +1,97 @@
+﻿@model VinaC2C.MVC.Models.UserModel;
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>VinaC2C - Đăng Nhập</title>
+    <link href="~/css/sbadminstyle.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body class="login-background">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="card shadow-lg border-0 rounded-lg mt-2 mb-2">
+                                <div class="card-header">
+                                    <h3 class="text-center font-weight-light my-4">Đăng Ký Tài Khoản</h3>
+                                </div>
+                                @Html.ValidationSummary(true, null, new { @class = "alert alert-danger" })
+                                <div class="card-body">
+                                    @using (Html.BeginForm("Login", "User", FormMethod.Post))
+                                    {
+                                        <div class="form-group">
+                                            <label class="small mb-1" for="inputEmailAddress">Họ Và Tên</label>
+                                            @Html.TextBoxFor(model => model.Fullname, new { @id = "inputEmailAddress", @class = "form-control py-4", @type = "email", @placeholder = "VD: Dương Nguyễn Tấn Hòa" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="small mb-1" for="inputEmailAddress">Tài Khoản</label>
+                                            @Html.TextBoxFor(model => model.Username, new { @id = "inputEmailAddress", @class = "form-control py-4", @type = "email", @placeholder = "Username" })
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="small mb-1" for="inputEmailAddress">Email</label>
+                                                    @Html.TextBoxFor(model => model.Email, new { @id = "inputEmailAddress", @class = "form-control py-4", @type = "email", @placeholder = "VD: tanhoatm@gmail.com" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div class="form-group">
+                                                        <label class="small mb-1" for="inputEmailAddress">Phone</label>
+                                                        @Html.TextBoxFor(model => model.Phone, new { @id = "inputEmailAddress", @class = "form-control py-4", @type = "email", @placeholder = "VD: 0359759402" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="small mb-1" for="inputPassword">Mật Khẩu</label>
+                                                    @Html.TextBoxFor(model => model.Password, new { @id = "inputPassword", @class = "form-control py-4", @type = "password", @placeholder = "Password" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div class="form-group">
+                                                        <label class="small mb-1" for="inputPassword">Xác Nhận</label>
+                                                        @Html.TextBoxFor(model => model.Password, new { @id = "inputPassword", @class = "form-control py-4", @type = "password", @placeholder = "Password" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                                            <a class="small" asp-action="Index" asp-controller="user">Bạn Đã Có Tài Khoản? Đăng Nhập</a>
+                                            <button class="btn btn-primary">Xác Nhận Đăng Ký</button>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <div id="layoutAuthentication_footer">
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Bản Quyền &copy; @DateTime.Now.Year VinaC2C Giải Pháp Cho Ngành Thương Mại Điện Tử</div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>
