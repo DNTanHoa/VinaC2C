@@ -7,6 +7,7 @@ using POSBlazor.Data.Services.Common;
 using VinaC2C.Data.Context;
 using VinaC2C.Data.Services.User;
 using VinaC2C.MVC.Models;
+using VinaC2C.Ultilities.Helpers;
 
 namespace VinaC2C.MVC.Controllers
 {
@@ -27,10 +28,42 @@ namespace VinaC2C.MVC.Controllers
         {
             return View();
         }
-
-        public IActionResult Register()
+        
+        public IActionResult Detail()
         {
-            return View();
+            return View("Register");
+        }
+
+        public async Task<IActionResult> Register(UserModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                if (model.Password != model.ConfirmPassword)
+                {
+                    ModelState.AddModelError("", "Mật Khẩu Xác Nhận Không Khớp");
+                    return View("Register");
+                }
+                else if (userService.IsExistEmail(model.Email).Result)
+                {
+                    ModelState.AddModelError("", "Email Đã Được Sử Dụng");
+                    return View("Register");
+                }
+                else if (userService.IsExistUsername(model.Username).Result)
+                {
+                    ModelState.AddModelError("", "Tên Đăng Nhập Đã Được Sử Dụng");
+                    return View("Register");
+                }
+                else
+                {
+                    //TODO: Send Mail To Active User
+                    var registerUser = new Data.Models.User();
+                    MapObjectHelper.MapDefault(model, out registerUser);
+                    await userService.RegisterUserDefautl(registerUser);
+                }
+                return View("Index");
+            }
+            else
+                return View("Register");
         }
         
         public IActionResult ResetPassword()
@@ -40,11 +73,12 @@ namespace VinaC2C.MVC.Controllers
 
         public IActionResult Login(UserModel model)
         {
-            if(ModelState.IsValid)
+            if(model != null)
             {
                 if(userService.LoginByUsernameAndPassword(model.Username,model.Password).Result)
                 {
-                    return RedirectToAction("Register");
+                    //TODO: Save User Login Infor Cookies
+                    return RedirectToAction("Index","Dashboard");
                 }
                 else
                 {
