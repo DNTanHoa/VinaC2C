@@ -9,5 +9,13 @@ namespace VinaC2C.Data.Services.User
     public interface IUserService : IServiceBase<Data.Models.User>
     {
         public Task<bool> LoginByUsernameAndPassword(string username, string password);
+        
+        public Task<bool> LoginByEmailAndPassword(string email, string password);
+
+        public Task<int> RegisterUserDefautl(Data.Models.User user);
+        
+        public Task<bool> IsExistEmail(string email);
+        
+        public Task<bool> IsExistUsername(string username);
     }
 }

@@ -12,6 +12,10 @@
     <ProjectReference Include="..\VinaC2C.Data\VinaC2C.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\template\" />
+  </ItemGroup>
+
 
 
 </Project>
