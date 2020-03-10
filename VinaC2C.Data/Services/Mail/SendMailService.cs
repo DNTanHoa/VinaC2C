@@ -23,6 +23,7 @@ namespace VinaC2C.Data.Services.Mail
 
             client = new SmtpClient();
             client.EnableSsl = mail.IsUsingSSL;
+            client.Host = mail.SMTPServer;
             client.Port = mail.SMTPPort;
             client.UseDefaultCredentials = false;
             client.Credentials = new NetworkCredential(mail.Username, mail.Password);

@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using POSBlazor.Data.Services.Common;
 using VinaC2C.Data.Context;
+using VinaC2C.Data.Services.Mail;
 using VinaC2C.Data.Services.User;
 using VinaC2C.MVC.Models;
 using VinaC2C.Ultilities.Helpers;
@@ -13,15 +15,20 @@ namespace VinaC2C.MVC.Controllers
 {
     public class UserController : Controller
     {
+        private readonly IWebHostEnvironment _environment;
 
         private readonly VinaC2CContext _context;
 
         public UserService userService;
 
-        public UserController(VinaC2CContext context)
+        public SendRegisterInforService sendRegisterInforService;
+
+        public UserController(VinaC2CContext context, IWebHostEnvironment environment)
         {
             this._context = context;
+            this._environment = environment;
             userService = new UserService(context);
+            sendRegisterInforService = new SendRegisterInforService();
         }
 
         public IActionResult Index()
@@ -55,10 +62,13 @@ namespace VinaC2C.MVC.Controllers
                 }
                 else
                 {
-                    //TODO: Send Mail To Active User
                     var registerUser = new Data.Models.User();
                     MapObjectHelper.MapDefault(model, out registerUser);
                     await userService.RegisterUserDefautl(registerUser);
+                    //For test only
+                    string templatePath = _environment.WebRootPath + Ultilities.AppInfor.AppGlobal.RegisterMailTemplatePath;
+                    sendRegisterInforService.SendConfirmLink(registerUser, templatePath);
+                    
                 }
                 return View("Index");
             }

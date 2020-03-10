@@ -7,7 +7,7 @@ namespace VinaC2C.Data.Services.Mail.Interface
 {
     public interface ISendRegisterInforService : ISendMailService
     {
-        public void SendConfirmLink(Data.Models.Mail mail);
+        public void SendConfirmLink(Data.Models.User registerUser, string templatePath);
 
         public Task SendConfirmLinkAsync(Data.Models.Mail mail);
     }

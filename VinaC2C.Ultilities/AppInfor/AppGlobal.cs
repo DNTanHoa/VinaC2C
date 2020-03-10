@@ -82,5 +82,97 @@ namespace VinaC2C.Ultilities.AppInfor
                 return configurationRoot.GetSection("MailObject") as object;
             }
         }
+
+        /// <summary>
+        /// SMTP Port
+        /// </summary>
+        public static int SMTPPort
+        {
+            get
+            {
+                IConfigurationRoot configurationRoot = new ConfigurationBuilder()
+                                                           .SetBasePath(Directory.GetCurrentDirectory())
+                                                           .AddJsonFile("appsettings.json")
+                                                           .Build();
+                return int.Parse(configurationRoot.GetSection("SMTPPort").Value.ToString());
+
+            }
+        }
+
+        /// <summary>
+        /// Mail Username
+        /// </summary>
+        public static string MailUserName
+        {
+            get
+            {
+                IConfigurationRoot configurationRoot = new ConfigurationBuilder()
+                                                           .SetBasePath(Directory.GetCurrentDirectory())
+                                                           .AddJsonFile("appsettings.json")
+                                                           .Build();
+                return configurationRoot.GetSection("MailUser").Value.ToString();
+            }
+        }
+
+        /// <summary>
+        /// Mail Username
+        /// </summary>
+        public static string MailPassword
+        {
+            get
+            {
+                IConfigurationRoot configurationRoot = new ConfigurationBuilder()
+                                                           .SetBasePath(Directory.GetCurrentDirectory())
+                                                           .AddJsonFile("appsettings.json")
+                                                           .Build();
+                return configurationRoot.GetSection("MailPassword").Value.ToString();
+            }
+        }
+
+        /// <summary>
+        /// RegisterMailDisplayName
+        /// </summary>
+        public static string RegisterMailDisplayName
+        {
+            get
+            {
+                IConfigurationRoot configurationRoot = new ConfigurationBuilder()
+                                                           .SetBasePath(Directory.GetCurrentDirectory())
+                                                           .AddJsonFile("appsettings.json")
+                                                           .Build();
+                return configurationRoot.GetSection("RegisterMailDisplayName").Value.ToString();
+            }
+        }
+
+        /// <summary>
+        /// RegisterMailSubject
+        /// </summary>
+        public static string RegisterMailSubject
+        {
+            get
+            {
+                IConfigurationRoot configurationRoot = new ConfigurationBuilder()
+                                                           .SetBasePath(Directory.GetCurrentDirectory())
+                                                           .AddJsonFile("appsettings.json")
+                                                           .Build();
+                return configurationRoot.GetSection("RegisterMailSubject").Value.ToString();
+            }
+        }
+
+        /// <summary>
+        /// RegisterMailTemplatePath
+        /// </summary>
+        public static string RegisterMailTemplatePath
+        {
+            get
+            {
+                IConfigurationRoot configurationRoot = new ConfigurationBuilder()
+                                                           .SetBasePath(Directory.GetCurrentDirectory())
+                                                           .AddJsonFile("appsettings.json")
+                                                           .Build();
+                return configurationRoot.GetSection("RegisterMailTemplatePath").Value.ToString();
+            }
+        }
+
     }
 }
