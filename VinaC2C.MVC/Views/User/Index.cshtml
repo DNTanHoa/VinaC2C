@@ -13,6 +13,7 @@
     <title>VinaC2C - Đăng Nhập</title>
     <link href="~/css/sbadminstyle.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+    
 </head>
 <body class="login-background">
     <div id="layoutAuthentication">
@@ -25,36 +26,33 @@
                                 <div class="card-header">
                                     <h3 class="text-center font-weight-light my-4"><img src="~/images/logo_black.png" width="159" height="46" alt="Logo" /></h3>
                                 </div>
-                                @Html.ValidationSummary(true, null, new { @class = "alert alert-danger" })
-                                <div class="card-body">
-                                    @using (Html.BeginForm("Login", "User", FormMethod.Post))
-                                    {
-                                        <div class="form-group">
-                                            <label class="small mb-1" for="inputEmailAddress">Tài Khoản</label>
-                                            <div>
-                                                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
-                                            </div>
-                                            @Html.TextBoxFor(model => model.Username, new {@class = "form-control", @type = "text", @placeholder = "Tài Khoản Hoặc Mail" })
+                                <div class="alert alert-danger" id="loginResult"></div>
+                                @*@Html.ValidationSummary(true, null, new { @class = "alert alert-danger", @Id = "loginResult" })*@
+                            <div class="card-body">
+                                @using (Html.BeginForm("Login", "User", FormMethod.Post, new {@id="loginForm"}))
+                                {
+                                    <div class="form-group">
+                                        <label class="small mb-1" for="inputEmailAddress">Tài Khoản</label>
+                                        @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                                        @Html.TextBoxFor(model => model.Username, new { @class = "form-control", @type = "text", @placeholder = "Tài Khoản" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="small mb-1" for="inputPassword">Mật Khẩu</label>
+                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                        @Html.TextBoxFor(model => model.Password, new {  @class = "form-control", @type = "password", @placeholder = "Mật khẩu" })
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="custom-control custom-checkbox">
+                                            <input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" />
+                                            <label class="custom-control-label" for="rememberPasswordCheck">Nhớ Mật Khẩu</label>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="small mb-1" for="inputPassword">Mật Khẩu</label>
-                                            <div>
-                                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                                            </div>
-                                            @Html.TextBoxFor(model => model.Password, new { @id = "inputPassword", @class = "form-control", @type = "password", @placeholder = "Mật khẩu" })
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox">
-                                                <input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" />
-                                                <label class="custom-control-label" for="rememberPasswordCheck">Nhớ Mật Khẩu</label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            <a class="small" asp-action="ResetPassword" asp-controller="User">Quên Mật Khẩu?</a>
-                                            <button class="btn btn-primary" type="submit">Đăng Nhập</button>
-                                        </div>
-                                    }
+                                    </div>
+                                }
+                                <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                                    <a class="small" asp-action="ResetPassword" asp-controller="User">Quên Mật Khẩu?</a>
+                                    <button class="btn btn-primary" onclick="onLogin()">Đăng Nhập</button>
                                 </div>
+                            </div>
                                 <div class="card-footer text-center">
                                     <div class="small"><a asp-action="Detail" asp-controller="User">Đăng Ký Tài Khoản Miễn Phí</a></div>
                                 </div>
@@ -75,7 +73,42 @@
         </div>
     </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $("#loginResult").hide();
+        });
+
+        function onLogin() {
+            if ($("#loginForm").valid()) {
+                var inputUsername = $("#Username").val();
+                var inputPassword = $("#Password").val();
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("Login","User")',
+                    data: {
+                        Username: inputUsername,
+                        Password: inputPassword
+                    },
+                    success: function (respone) {
+                        console.log(respone);
+                        console.log(respone.result);
+                        console.log(respone.message);
+                        if (respone.result === 'Invalid') {
+                            $("#loginResult").show();
+                            $("#loginResult").append(respone.message);
+                        }
+                        else if (respone.result === 'Valid') {
+                            window.location = respone.message;
+                        }
+                    }
+                });
+            }
+        }
+    </script>
 </body>
+
 </html>
 

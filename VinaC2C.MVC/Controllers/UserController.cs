@@ -81,24 +81,24 @@ namespace VinaC2C.MVC.Controllers
             return View();
         }
 
-        public IActionResult Login(UserModel model)
+        [AcceptVerbs("POST")]
+        public ActionResult Login(UserModel model)
         {
             if(model != null)
             {
                 if(userService.LoginByUsernameAndPassword(model.Username,model.Password).Result)
                 {
                     //TODO: Save User Login Infor Cookies
-                    return RedirectToAction("Index","Dashboard");
+                    return Json(new { result = "Valid", message = Url.Action("Index", "Dashboard") });
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Tên Đăng Nhập Hoặc Mật Khẩu Không Hợp Lệ");
-                    return View("Index");
+                    return Json( new {result = "Invalid", message = "Tên Đăng Nhập Hoặc Mật Khẩu Không Hợp Lệ" });
                 }
             }
             else
             {
-                return View("Index");
+                return Json(new { result = "Invalid", message = "" });
             }
         }
     }
