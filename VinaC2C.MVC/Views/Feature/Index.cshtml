@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewData["Title"] = "Danh Sách Tính Năng";
+    Layout = "~/Views/Shared/_AdminLTELayout.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Tính Năng Hệ Thống</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Trang Chủ</a></li>
+                    <li class="breadcrumb-item active">Tính Năng</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Danh Sách Tính Năng</h3>
+        </div>
+        <div class="card-body" style="height:700px;">
+            <div id="listFeature" style="height:700px;"></div>
+        </div>
+    </div>
+</section>
+
+<script src="~/LTEplugins/jsgrid/jsgrid.min.js"></script>
+<script>
+    $(function () {
+        $("#listFeature").jsGrid({
+            height: "100%",
+            width: "100%",
+            paging: true,
+            autoload: true,
+            pagerFormat: "Trang: {first} {prev} {pages} {next} {last}    {pageIndex} of {pageCount}",
+            pagePrevText: "Trước",
+            pageNextText: "Tiếp",
+            pageNavigatorNextText: "...",
+            pageNavigatorPrevText: "...",
+            editing: true,
+            inserting: true,
+            reloadAfterSubmit: true,
+            pageSize: 15,
+            pageButtonCount: 5,
+            controller: {
+                loadData: function() {
+                    var d = $.Deferred();
+                    $.ajax({
+                        type:"POST",
+                        url: '@Url.Action("GetAllAsyncToList","Feature")'
+                    }).done(function (response) {
+                        console.log(response);
+                        d.resolve(response);
+                    });
+                    return d.promise();
+                },
+                insertItem: function (item) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("Create","Feature")',
+                        data: item
+                    }).done(function (respone) {
+                        console.log(respone);
+                        $('#listFeature').trigger('reloadGrid');
+                    });
+                },
+                updateItem: function (item) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("Update","Feature")',
+                        data: item
+                    }).done(function (respone) {
+                        console.log(respone);
+                        $("#listFeature").trigger('reloadGrid');
+                    });
+                },
+                deleteItem: function (item) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("Delete","Feature")',
+                        data: item
+                    }).done(function (respone) {
+                        console.log(respone);
+                        $("#listFeature").trigger('reloadGrid');
+                    });
+                }
+            },
+
+            fields: [
+                { name: "id", type: "number", title: "Id", with: 100, editing: false, inserting: false },
+                { name: "name", type: "text", title:"Tên" , with:300 },
+                { name: "parentFeatureID", type: "number", title:"Cấp Trên" , with:200 },
+                { name: "controller", type: "text", title: "Controller",with:200 },
+                { name: "action", type: "text", title: "Action",with:300 },
+                { name: "icon", type: "text", title: "Icon",with:200 },
+                { name: "sortOrder", type: "number", title: "Thứ Tự",with:200 },
+                { name: "isMenuLeft", type: "checkbox", title: "Menu Left", with: 80 },
+                { name: "createDate", type: "text", title: "Ngày Tạo", with: 200, editing: false, inserting: false },
+                { name: "createUser", type: "text", title: "Người Tạo",with:300, editing: false, inserting: false },
+                { name: "updateDate", type: "text", title: "Ngày Sửa", with: 200, editing: false, inserting: false },
+                { name: "updateUser", type: "text", title: "Người Tạo",with:300, editing: false, inserting: false },
+                { type: "control" }
+            ]
+        });
+    });
+</script>

@@ -1,0 +1,108 @@
+﻿
+@{
+    ViewData["Title"] = "Danh Sách Tính Năng";
+    Layout = "~/Views/Shared/_AdminLTELayout.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Sàn Thương Mại Điện Tử</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Trang Chủ</a></li>
+                    <li class="breadcrumb-item active">Sàn Thương Mại Điện Tử</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Danh Sách Cửa Hàng</h3>
+        </div>
+        <div class="card-body" style="height:700px;">
+            <div id="listFeature" style="height:700px;"></div>
+        </div>
+    </div>
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="~/LTEplugins/jsgrid/jsgrid.min.js"></script>
+<script>
+    $(function () {
+        $("#listFeature").jsGrid({
+            height: "100%",
+            width: "100%",
+            paging: true,
+            autoload: true,
+            pagerFormat: "Trang: {first} {prev} {pages} {next} {last}    {pageIndex} of {pageCount}",
+            pagePrevText: "Trước",
+            pageNextText: "Tiếp",
+            pageNavigatorNextText: "...",
+            pageNavigatorPrevText: "...",
+            editing: true,
+            inserting: true,
+            reloadAfterSubmit: true,
+            pageSize: 15,
+            pageButtonCount: 5,
+            controller: {
+                loadData: function() {
+                    var d = $.Deferred();
+                    $.ajax({
+                        type:"POST",
+                        url: '@Url.Action("GetAllAsyncToList","DigitalShop")'
+                    }).done(function (response) {
+                        console.log(response);
+                        d.resolve(response);
+                    });
+                    return d.promise();
+                },
+                insertItem: function (item) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("Create","DigitalShop")',
+                        data: item
+                    }).done(function (respone) {
+                        console.log(respone);
+                        $(this).jqGrid().trigger('reloadGrid');
+                    });
+                },
+                updateItem: function (item) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("Update","DigitalShop")',
+                        data: item
+                    }).done(function (respone) {
+                        console.log(respone);
+                        $(this).jqGrid().trigger('reloadGrid');
+                    });
+                },
+                deleteItem: function (item) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("Delete","DigitalShop")',
+                        data: item
+                    }).done(function (respone) {
+                        console.log(respone);
+                        $(this).jqGrid().trigger('reloadGrid');
+                    });
+                }
+            },
+
+            fields: [
+                
+                { name: "name", type: "text", title:"Tên" , with:300 },
+                { name: "apiUrlPrefix", type: "text", title: "Api Url", with: 200 },
+                { name: "note", type: "text", title:"Api Url" , with:200 },
+                { name: "createDate", type: "text", title: "Ngày Tạo", with: 200, editing: false, inserting: false },
+                { name: "createUser", type: "text", title: "Người Tạo",with:300, editing: false, inserting: false },
+                { name: "updateDate", type: "text", title: "Ngày Sửa", with: 200, editing: false, inserting: false },
+                { name: "updateUser", type: "text", title: "Người Tạo", with: 300, editing: false, inserting: false },
+                { type: "control" }
+            ]
+        });
+    });
+</script>

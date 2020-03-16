@@ -174,5 +174,124 @@ namespace VinaC2C.Ultilities.AppInfor
             }
         }
 
+        /// <summary>
+        /// Get Current WebServer Time
+        /// </summary>
+        public static DateTime SystemDateTime => DateTime.Now;
+
+        /// <summary>
+        /// Get Current WebServer Day
+        /// </summary>
+        public static DateTime SystemDate => DateTime.Today;
+
+        /// <summary>
+        /// Get Current WebServer Day
+        /// </summary>
+        public static int SystemDay => DateTime.Today.Day;
+
+        /// <summary>
+        /// Get Current WebServer Month
+        /// </summary>
+        public static int SystemMonth => DateTime.Today.Month;
+
+        /// <summary>
+        /// Get Current WebServer Month
+        /// </summary>
+        public static int SystemYear => DateTime.Today.Year;
+
+        /// <summary>
+        /// Get Current System Datetime String
+        /// </summary>
+        public static string SystemDateString => DateTime.Now.ToString("yyyyMMddd");
+
+        /// <summary>
+        /// Insert Success Message
+        /// </summary>
+        public static string InsertSuccessMessage
+        {
+            get
+            {
+                IConfigurationRoot configurationRoot = new ConfigurationBuilder()
+                                                           .SetBasePath(Directory.GetCurrentDirectory())
+                                                           .AddJsonFile("appsettings.json")
+                                                           .Build();
+                return configurationRoot.GetSection("InsertSuccessMessage").Value.ToString();
+            }
+        }
+
+        /// <summary>
+        /// Insert Fail Message
+        /// </summary>
+        public static string InsertFailMessage
+        {
+            get
+            {
+                IConfigurationRoot configurationRoot = new ConfigurationBuilder()
+                                                           .SetBasePath(Directory.GetCurrentDirectory())
+                                                           .AddJsonFile("appsettings.json")
+                                                           .Build();
+                return configurationRoot.GetSection("InsertFailMessage").Value.ToString();
+            }
+        }
+
+        /// <summary>
+        /// Delete Success Message
+        /// </summary>
+        public static string DeleteSuccessMessage
+        {
+            get
+            {
+                IConfigurationRoot configurationRoot = new ConfigurationBuilder()
+                                                           .SetBasePath(Directory.GetCurrentDirectory())
+                                                           .AddJsonFile("appsettings.json")
+                                                           .Build();
+                return configurationRoot.GetSection("DeleteSuccessMessage").Value.ToString();
+            }
+        }
+        
+        /// <summary>
+        /// Delete Success Message
+        /// </summary>
+        public static string DeleteFailMessage
+        {
+            get
+            {
+                IConfigurationRoot configurationRoot = new ConfigurationBuilder()
+                                                           .SetBasePath(Directory.GetCurrentDirectory())
+                                                           .AddJsonFile("appsettings.json")
+                                                           .Build();
+                return configurationRoot.GetSection("DeleteFailMessage").Value.ToString();
+            }
+        }
+
+        /// <summary>
+        /// Update Success Message
+        /// </summary>
+        public static string UpdateSuccessMessage
+        {
+            get
+            {
+                IConfigurationRoot configurationRoot = new ConfigurationBuilder()
+                                                           .SetBasePath(Directory.GetCurrentDirectory())
+                                                           .AddJsonFile("appsettings.json")
+                                                           .Build();
+                return configurationRoot.GetSection("UpdateSuccessMessage").Value.ToString();
+            }
+        }
+
+        /// <summary>
+        /// Update Fail Message
+        /// </summary>
+        public static string UpdateFailMessage
+        {
+            get
+            {
+                IConfigurationRoot configurationRoot = new ConfigurationBuilder()
+                                                           .SetBasePath(Directory.GetCurrentDirectory())
+                                                           .AddJsonFile("appsettings.json")
+                                                           .Build();
+                return configurationRoot.GetSection("UpdateFailMessage").Value.ToString();
+            }
+        }
     }
 }

@@ -16,6 +16,9 @@ namespace VinaC2C.Data.Context
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new UserConfiguration());
+            builder.ApplyConfiguration(new FeatureConfiguration());
+            builder.ApplyConfiguration(new FeatureRoleConfiguration());
+            builder.ApplyConfiguration(new DigitalShopConfiguration());
 
             base.OnModelCreating(builder);
         }
@@ -32,5 +35,8 @@ namespace VinaC2C.Data.Context
         }
 
         public DbSet<User> Users { get; set; } 
+        public DbSet<FeatureRole> FeatureRoles { get; set; } 
+        public DbSet<Feature> Features { get; set; } 
+        public DbSet<DigitalShop> DigitalShops { get; set; } 
     }
 }

@@ -101,5 +101,15 @@ namespace VinaC2C.MVC.Controllers
                 return Json(new { result = "Invalid", message = "" });
             }
         }
+
+        public ActionResult ListView()
+        {
+            return View();
+        }
+
+        public async Task<ActionResult> GetAllAsyncToList()
+        {
+            return Json(await userService.GetAllToListAsync());
+        }
     }
 }

@@ -1,11 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VinaC2C.Ultilities.AppInfor;
+using VinaC2C.Ultilities.Enums;
 
 namespace VinaC2C.Data.Models
 {
     public class ObjectBaseModel : BaseModel
     {
+        public void Initialization(ObjectInitType initType, string requestUser)
+        {
+            if (initType == ObjectInitType.Insert)
+            {
+                this.CreateDate = AppGlobal.SystemDate;
+                this.CreateUser = requestUser;
+            }
+            this.UpdateDate = AppGlobal.SystemDate;
+            this.UpdateUser = requestUser;
+        }
+
+        public bool GCRecord { get; set; }
+
         public string CreateUser { get; set; }
 
         public string UpdateUser { get; set; }
