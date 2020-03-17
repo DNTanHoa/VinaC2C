@@ -12,10 +12,10 @@ namespace VinaC2C.Data.Models
         {
             if (initType == ObjectInitType.Insert)
             {
-                this.CreateDate = AppGlobal.SystemDate;
+                this.CreateDate = AppGlobal.SystemDateTime;
                 this.CreateUser = requestUser;
             }
-            this.UpdateDate = AppGlobal.SystemDate;
+            this.UpdateDate = AppGlobal.SystemDateTime  ;
             this.UpdateUser = requestUser;
         }
 

@@ -44,9 +44,9 @@ namespace VinaC2C.MVC.Controllers
             shop.Initialization(ObjectInitType.Insert, "");
             int result = digitalShopService.Create(shop);
             if (result != 0)
-                return Json(new { messageType = "Success", note = AppGlobal.InsertSuccessMessage });
+                return Json(new { messageType = "success", note = AppGlobal.InsertSuccessMessage });
             else
-                return Json(new { messageType = "Fail", note = AppGlobal.InsertFailMessage });
+                return Json(new { messageType = "eror", note = AppGlobal.InsertFailMessage });
         }
 
         public JsonResult Update(DigitalShop shop)
@@ -54,18 +54,18 @@ namespace VinaC2C.MVC.Controllers
             shop.Initialization(ObjectInitType.Update, "");
             int result = digitalShopService.Update(shop.Id, shop);
             if (result != 0)
-                return Json(new { messageType = "Success", note = AppGlobal.UpdateSuccessMessage });
+                return Json(new { messageType = "success", note = AppGlobal.UpdateSuccessMessage });
             else
-                return Json(new { messageType = "Fail", note = AppGlobal.UpdateFailMessage });
+                return Json(new { messageType = "eror", note = AppGlobal.UpdateFailMessage });
         }
 
         public JsonResult Delete(DigitalShop shop)
         {
             int result = digitalShopService.Delete(shop.Id);
             if (result != 0)
-                return Json(new { messageType = "Success", note = AppGlobal.DeleteSuccessMessage });
+                return Json(new { messageType = "success", note = AppGlobal.DeleteSuccessMessage });
             else
-                return Json(new { messageType = "Fail", note = AppGlobal.DeleteFailMessage });
+                return Json(new { messageType = "eror", note = AppGlobal.DeleteFailMessage });
         }
     }
 }

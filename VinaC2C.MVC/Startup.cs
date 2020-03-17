@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using VinaC2C.Data.Context;
+using VinaC2C.MVC.ServerHub;
 
 namespace VinaC2C.MVC
 {
@@ -26,6 +27,7 @@ namespace VinaC2C.MVC
         {
             services.AddDbContext<VinaC2CContext>();
             services.AddControllersWithViews();
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,11 +50,14 @@ namespace VinaC2C.MVC
 
             app.UseAuthorization();
 
+
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHub<SignalServer>("signalServer");
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+               
             });
         }
     }
