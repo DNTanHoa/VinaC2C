@@ -1,0 +1,120 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLTELayout.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Hỗ Trợ Trực Tuyến</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Trang Chủ</a></li>
+                    <li class="breadcrumb-item active">Hỗ Trợ</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card direct-chat direct-chat-warning">
+                <div class="card-header">
+                    <h3 class="card-title">Trực Tuyến</h3>
+                    <div class="card-tools">
+                        <span data-toggle="tooltip" title="3 New Messages" class="badge badge-warning"></span>
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="direct-chat-messages">
+
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="input-group">
+                        <input type="text" id="messageInput" name="message" placeholder="Nhập Nội Dung...." class="form-control">
+                        <span class="input-group-append">
+                            <button type="button" id="SendButton" class="btn btn-warning"><i class="far fa-paper-plane"></i></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Người Đăng Nhập</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input class="form-control" id="userInput" placeholder="Tên Đăng Nhập">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Danh Sách Thành Viên</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    <ul class="users-list clearfix">
+                        <li>
+                            <img src="~/images/user_avatar.png" alt="User Image">
+                            <a class="users-list-name" href="#">Tên Người Hỗ Trợ</a>
+                        </li>
+                        <li>
+                            <img src="~/images/user_avatar.png" alt="User Image">
+                            <a class="users-list-name" href="#">Tên Người Hỗ Trợ</a>
+                        </li>
+                        <li>
+                            <img src="~/images/user_avatar.png" alt="User Image">
+                            <a class="users-list-name" href="#">Tên Người Hỗ Trợ</a>
+                        </li>
+                        <li>
+                            <img src="~/images/user_avatar.png" alt="User Image">
+                            <a class="users-list-name" href="#">Tên Người Hỗ Trợ</a>
+                        </li>
+                        <li>
+                            <img src="~/images/user_avatar.png" alt="User Image">
+                            <a class="users-list-name" href="#">Tên Người Hỗ Trợ</a>
+                        </li>
+                        <li>
+                            <img src="~/images/user_avatar.png" alt="User Image">
+                            <a class="users-list-name" href="#">Tên Người Hỗ Trợ</a>
+                        </li>
+                        <li>
+                            <img src="~/images/user_avatar.png" alt="User Image">
+                            <a class="users-list-name" href="#">Tên Người Hỗ Trợ</a>
+                        </li>
+                        <li>
+                            <img src="~/images/user_avatar.png" alt="User Image">
+                            <a class="users-list-name" href="#">Tên Người Hỗ Trợ</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="javascript::">Xem Tất Cả</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/dist/js/chat.js"></script>
+ </section>

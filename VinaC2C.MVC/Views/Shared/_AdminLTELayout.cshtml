@@ -50,7 +50,7 @@
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <ul id="menuLeft" class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <li class="nav-item has-treeview menu-open">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -167,16 +167,15 @@
         
     </div>
     <script>
-        @*Notification*@
-        $(".toast").toast({
-            delay: 1000
-        });
-        function showNotification(content) {
-            $('#element').toast('show');
-        }
-        function hideNotification(content) {
-            $('#element').toast('hide');
-        }
+       $(document).ready(function () {
+	        $.ajax({
+                url: '@Url.Action("GetMenuLeft","Feature")',
+                success: function (data) {
+                    $("#menuLeft").empty();
+                    $("#menuLeft").html(data);
+                }
+	        });
+       });
     </script>
 </body>
 

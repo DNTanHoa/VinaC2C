@@ -15,7 +15,7 @@ namespace VinaC2C.Data.Models
                 this.CreateDate = AppGlobal.SystemDateTime;
                 this.CreateUser = requestUser;
             }
-            this.UpdateDate = AppGlobal.SystemDateTime  ;
+            this.UpdateDate = AppGlobal.SystemDateTime;
             this.UpdateUser = requestUser;
         }
 

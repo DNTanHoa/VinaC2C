@@ -1,0 +1,35 @@
+﻿@using VinaC2C.Ultilities.TemplateModel;
+@using VinaC2C.Data.Models;
+@model IEnumerable<TreeItem<Feature>>;
+
+<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+   @foreach (var item in Model)
+    {
+        @if(item.Childrens.Any())
+        {
+            <li class="nav-item has-treeview">
+                <a asp-action="@item.Item.Action" asp-controller="@item.Item.Controller" class="nav-link">
+                    <i class="nav-icon @item.Item.Icon"></i>
+                    <p>
+                        @item.Item.Name
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                     @Html.Partial("~/Views/Partial/_MenuLeft.cshtml", item.Childrens)
+                </ul>
+            </li>
+        }
+        else
+        {
+             <li class="nav-item">
+                <a asp-action="@item.Item.Action" asp-controller="@item.Item.Controller" class="nav-link">
+                    <i class="nav-icon @item.Item.Icon"></i>
+                    <p>
+                        @item.Item.Name
+                    </p>
+                </a>
+            </li>
+        }
+    }
+</ul>

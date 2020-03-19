@@ -15,23 +15,22 @@ using VinaC2C.Ultilities.Extensions;
 
 namespace VinaC2C.MVC.Controllers
 {
-    public class FeatureController : Controller
+    public class FeatureRoleController : Controller
     {
         private readonly IWebHostEnvironment _environment;
 
         private readonly VinaC2CContext _context;
 
-        public FeatureService featureService;
-
+        public FeatureRoleService featureRoleService;
 
         private IHubContext<SignalServer> _hubContext;
 
-        public FeatureController(VinaC2CContext context, IWebHostEnvironment environment, IHubContext<SignalServer> hubContext)
+        public FeatureRoleController(VinaC2CContext context, IWebHostEnvironment environment, IHubContext<SignalServer> hubContext)
         {
             this._context = context;
             this._environment = environment;
             this._hubContext = hubContext;
-            featureService = new FeatureService(context);
+            featureRoleService = new FeatureRoleService(context);
         }
 
         public IActionResult Index()
@@ -41,13 +40,13 @@ namespace VinaC2C.MVC.Controllers
         
         public async Task<JsonResult> GetAllAsyncToList()
         {
-            return Json(await featureService.GetAllToListAsync());
+            return Json(await featureRoleService.GetAllToListAsync());
         }
 
-        public JsonResult Create(Feature feature)
+        public JsonResult Create(FeatureRole featureRole)
         {
-            feature.Initialization(ObjectInitType.Insert, "");
-            int result = featureService.Create(feature);
+            featureRole.Initialization(ObjectInitType.Insert, "");
+            int result = featureRoleService.Create(featureRole);
             _hubContext.Clients.All.SendAsync("dataChangeNotification", null);
             if (result != 0)
                 return Json(new { messageType = "success", note = AppGlobal.InsertSuccessMessage });
@@ -55,10 +54,10 @@ namespace VinaC2C.MVC.Controllers
                 return Json(new { messageType = "error", note = AppGlobal.InsertFailMessage });
         }
 
-        public JsonResult Update(Feature feature)
+        public JsonResult Update(FeatureRole featureRole)
         {
-            feature.Initialization(ObjectInitType.Update, "");
-            int result = featureService.Update(feature.Id, feature);
+            featureRole.Initialization(ObjectInitType.Update, "");
+            int result = featureRoleService.Update(featureRole.Id, featureRole);
             _hubContext.Clients.All.SendAsync("dataChangeNotification", null);
             if (result != 0)
                 return Json(new { messageType = "success", note = AppGlobal.UpdateSuccessMessage });
@@ -66,9 +65,9 @@ namespace VinaC2C.MVC.Controllers
                 return Json(new { messageType = "error", note = AppGlobal.UpdateFailMessage });
         }
 
-        public JsonResult Delete(Feature feature)
+        public JsonResult Delete(FeatureRole featureRole)
         {
-            int result = featureService.Delete(feature.Id);
+            int result = featureRoleService.Delete(featureRole.Id);
             _hubContext.Clients.All.SendAsync("dataChangeNotification", null);
             if (result != 0)
                 return Json(new { messageType = "success", note = AppGlobal.DeleteSuccessMessage });
@@ -76,12 +75,5 @@ namespace VinaC2C.MVC.Controllers
                 return Json(new { messageType = "error", note = AppGlobal.DeleteFailMessage });
         }
 
-
-        public async Task<IActionResult> GetMenuLeft()
-        {
-            var features = await featureService.GetAllToListAsync();
-            var menu = features.OrderBy(item => item.SortOrder).GenerateTree(item => item.Id, item => item.ParentFeatureID);
-            return PartialView("~/Views/Partial/_MenuLeft.cshtml", menu);
-        }
     }
 }

@@ -54,6 +54,7 @@ namespace VinaC2C.MVC
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHub<SignalServer>("signalServer");
+                endpoints.MapHub<ChatServer>("chatServer");
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
