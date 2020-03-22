@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using POSBlazor.Data.Services.Common;
@@ -88,7 +91,11 @@ namespace VinaC2C.MVC.Controllers
             {
                 if(userService.LoginByUsernameAndPassword(model.Username,model.Password).Result)
                 {
-                    //TODO: Save User Login Infor Cookies
+                    var user = userService.GetByUsername(model.Username);
+                    var claims = ClaimHelper.GetListFromObject(user);
+                    var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    var authProperties = new AuthenticationProperties();
+                    HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimIdentity), authProperties);
                     return Json(new { result = "Valid", message = Url.Action("Index", "Dashboard") });
                 }
                 else

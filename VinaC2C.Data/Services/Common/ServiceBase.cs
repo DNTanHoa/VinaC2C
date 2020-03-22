@@ -32,7 +32,7 @@ namespace POSBlazor.Data.Services.Common
             return await _context.SaveChangesAsync();
         }
 
-        public int Delete(int modelId)
+        public int Delete(Int64 modelId)
         {
             var existModel = GetById(modelId);
             if (existModel != null)
@@ -42,7 +42,7 @@ namespace POSBlazor.Data.Services.Common
             return  _context.SaveChanges();
         }
 
-        public async Task<int> DeleteAsync(int modelId)
+        public async Task<int> DeleteAsync(Int64 modelId)
         {
             var existModel = await GetByIdAsync(modelId);
             if (existModel != null)
@@ -64,17 +64,17 @@ namespace POSBlazor.Data.Services.Common
             return result != null ? result : new List<TEntity>();
         }
 
-        public TEntity GetById(int modelId)
+        public TEntity GetById(Int64 modelId)
         {
             return  _context.Set<TEntity>().AsNoTracking().FirstOrDefault(model => model.Id == modelId);
         }
 
-        public async Task<TEntity> GetByIdAsync(int modelId)
+        public async Task<TEntity> GetByIdAsync(Int64 modelId)
         {
             return await _context.Set<TEntity>().AsNoTracking().FirstOrDefaultAsync(model => model.Id == modelId);
         }
 
-        public int Update(int modelId, TEntity model)
+        public int Update(Int64 modelId, TEntity model)
         {
             var existModel = GetById(modelId);
             if (existModel != null)
@@ -85,7 +85,7 @@ namespace POSBlazor.Data.Services.Common
             return _context.SaveChanges();
         }
 
-        public async Task<int> UpdateAsync(int modelId, TEntity model)
+        public async Task<int> UpdateAsync(Int64 modelId, TEntity model)
         {
             var existModel = await GetByIdAsync(modelId);
             if(existModel != null)

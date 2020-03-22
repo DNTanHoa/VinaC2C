@@ -10,22 +10,22 @@ namespace VinaC2C.Data.Services.Common
     {
         public Task<int> CreateAsync(TEntity model);
 
-        public Task<int> UpdateAsync(int modelId, TEntity model);
+        public Task<int> UpdateAsync(Int64 modelId, TEntity model);
 
-        public Task<int> DeleteAsync(int modelId);
+        public Task<int> DeleteAsync(Int64 modelId);
 
         public Task<List<TEntity>> GetAllToListAsync();
 
-        public Task<TEntity> GetByIdAsync(int modelId);
+        public Task<TEntity> GetByIdAsync(Int64 modelId);
 
         public int Create(TEntity model);
 
-        public int Update(int modelId, TEntity model);
+        public int Update(Int64 modelId, TEntity model);
 
-        public int Delete(int modelId);
+        public int Delete(Int64 modelId);
 
         public List<TEntity> GetAllToList();
 
-        public TEntity GetById(int modelId);
+        public TEntity GetById(Int64 modelId);
     }
 }

@@ -10,8 +10,8 @@ using VinaC2C.Data.Context;
 namespace VinaC2C.Data.Migrations
 {
     [DbContext(typeof(VinaC2CContext))]
-    [Migration("20200315155235_AddFeatureAndRole")]
-    partial class AddFeatureAndRole
+    [Migration("20200322163530_AddDatabase")]
+    partial class AddDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,10 +23,9 @@ namespace VinaC2C.Data.Migrations
 
             modelBuilder.Entity("VinaC2C.Data.Models.DigitalShop", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("bigint");
 
                     b.Property<string>("ApiUrlPrefix")
                         .HasColumnType("nvarchar(max)");
@@ -57,12 +56,49 @@ namespace VinaC2C.Data.Migrations
                     b.ToTable("DigitalShops");
                 });
 
+            modelBuilder.Entity("VinaC2C.Data.Models.DigitalShopRole", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreateUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("DigitalShopID")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("GCRecord")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsAllow")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdateUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("UserID")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DigitalShopRoles");
+                });
+
             modelBuilder.Entity("VinaC2C.Data.Models.Feature", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Action")
                         .HasColumnType("nvarchar(max)");
@@ -113,10 +149,9 @@ namespace VinaC2C.Data.Migrations
 
             modelBuilder.Entity("VinaC2C.Data.Models.FeatureRole", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime?>("CreateDate")
                         .HasColumnType("datetime2");
@@ -124,8 +159,8 @@ namespace VinaC2C.Data.Migrations
                     b.Property<string>("CreateUser")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("FeatureID")
-                        .HasColumnType("int");
+                    b.Property<long>("FeatureID")
+                        .HasColumnType("bigint");
 
                     b.Property<bool>("GCRecord")
                         .HasColumnType("bit");
@@ -142,20 +177,101 @@ namespace VinaC2C.Data.Migrations
                     b.Property<string>("UpdateUser")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
+                    b.Property<long>("UserID")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
                     b.ToTable("FeatureRoles");
                 });
 
+            modelBuilder.Entity("VinaC2C.Data.Models.ServiceTicket", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreateUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("DateCycleExpire")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("GCRecord")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsFree")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal?>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime?>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdateUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ServiceTickets");
+                });
+
+            modelBuilder.Entity("VinaC2C.Data.Models.ServiceTicketRole", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreateUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ExpireDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("GCRecord")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsAllow")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("ServiceTicketID")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdateUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("UserID")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ServiceTicketRoles");
+                });
+
             modelBuilder.Entity("VinaC2C.Data.Models.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime?>("CreateDate")
                         .HasColumnType("datetime2");

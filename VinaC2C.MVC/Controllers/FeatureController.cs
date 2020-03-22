@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.SignalR;
 using VinaC2C.Data.Context;
 using VinaC2C.Data.Models;
 using VinaC2C.Data.Services.Feature;
+using VinaC2C.Data.Services.User;
+using VinaC2C.MVC.Models;
 using VinaC2C.MVC.ServerHub;
 using VinaC2C.Ultilities.AppInfor;
 using VinaC2C.Ultilities.Enums;

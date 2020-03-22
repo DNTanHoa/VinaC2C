@@ -13,6 +13,10 @@ namespace VinaC2C.Data.Configurations
         {
             builder.ToTable("FeatureRoles");
             builder.HasKey(x => x.Id);
+            builder.Property(p => p.Id).UseIdentityColumn();
+            builder.Property(p => p.Id).HasColumnType("bigint");
+            builder.Property(p => p.FeatureID).HasColumnType("bigint");
+            builder.Property(p => p.UserID).HasColumnType("bigint");
         }
     }
 }

@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.SignalR;
 using VinaC2C.Data.Context;
+using VinaC2C.Data.DataTransferObject;
 using VinaC2C.Data.Models;
 using VinaC2C.Data.Services.Feature;
+using VinaC2C.Data.Services.User;
+using VinaC2C.MVC.Models;
 using VinaC2C.MVC.ServerHub;
 using VinaC2C.Ultilities.AppInfor;
 using VinaC2C.Ultilities.Enums;
@@ -15,6 +20,7 @@ using VinaC2C.Ultilities.Extensions;
 
 namespace VinaC2C.MVC.Controllers
 {
+    [Authorize]
     public class FeatureRoleController : Controller
     {
         private readonly IWebHostEnvironment _environment;
@@ -22,6 +28,8 @@ namespace VinaC2C.MVC.Controllers
         private readonly VinaC2CContext _context;
 
         public FeatureRoleService featureRoleService;
+        public UserService userService;
+
 
         private IHubContext<SignalServer> _hubContext;
 
@@ -31,11 +39,17 @@ namespace VinaC2C.MVC.Controllers
             this._environment = environment;
             this._hubContext = hubContext;
             featureRoleService = new FeatureRoleService(context);
+            userService = new UserService(context);
+
         }
 
-        public IActionResult Index()
+        [Authorize]
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var model = new FeatureRoleModel();
+            model.users = await userService.GetForSelectList();
+            model.userOptions = new SelectList(model.users, nameof(UserSelect.ID), nameof(UserSelect.DisplayName));
+            return View(model);
         }
         
         public async Task<JsonResult> GetAllAsyncToList()
@@ -75,5 +89,19 @@ namespace VinaC2C.MVC.Controllers
                 return Json(new { messageType = "error", note = AppGlobal.DeleteFailMessage });
         }
 
+        public JsonResult GetFeatureByUserID(int UserID)
+        {
+            return Json(featureRoleService.GetFeatureByUserID(UserID));
+        }
+
+        public JsonResult GetFeatureByUsername(string username)
+        {
+            return Json(featureRoleService.GetFeatureByUsername(username));
+        }
+
+        public JsonResult InitializeUserFeatureRole()
+        {
+            return Json(featureRoleService.InitializeUserFeatureRole());
+        }
     }
 }

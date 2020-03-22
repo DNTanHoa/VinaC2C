@@ -3,6 +3,7 @@
     ViewData["Title"] = "Phân Quyền Tính Năng";
     Layout = "~/Views/Shared/_AdminLTELayout.cshtml";
 }
+@model VinaC2C.MVC.Models.FeatureRoleModel;
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -23,100 +24,167 @@
         <div class="card-header container-fluid">
             <div class="container-fluid">
                 <div class="row">
-                    <h3 class="card-title col-8 col-md-11 m-0 p-0 mt-2">Danh Sách Tính Năng</h3>
-                    <button id="reloadButton" type="button" class="btn btn-success col-4 col-md-1" onclick="onReloadGrid('listFeature')">
-                        <i class="fas fa-sync-alt h5 m-0 p-0"></i>
-                    </button>
+                    <div class="col-md-4 col-sm-12 mt-1">
+                        <select id="UserID" class="form-control select2bs4" asp-for="@Model.UserID" asp-items="@Model.userOptions"></select>
+                    </div>
+
+                    <div class="col-md-8 col-sm-12 mt-1">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button id="searchButton" type="button" class="btn btn-success btn-large" style="flex-basis:20%;" onclick="onSearchUserFeatureRole()">
+                                <i class="fas fa-search h5 m-0 p-0"></i>
+                            </button>
+                            <button id="initButton" type="button" class="btn btn-primary btn-large" style="flex-basis:20%;" onclick="onInitFeatureRole()">
+                                <i class="fas fa-file-upload h5 m-0 p-0"></i>
+                            </button>
+                            <div style="flex-basis:35%;">
+                                <div class="icheck-primary">
+                                    <input type="checkbox" id="checkboxPrimary3">
+                                    <label for="checkboxPrimary3">
+                                        Tất Cả
+                                    </label>
+                                </div>
+                            </div>
+                            <button id="initButton" type="button" class="btn btn-primary btn-large" style="flex-basis:20%;" onclick="onSaveChange()">
+                                <i class="fas fa-save h5 m-0 p-0"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header container-fluid">
+            <div class="container-fluid">
+                <div class="row">
+                    <h3 class="card-title mt-2">Danh Sách Tính Năng</h3>
                 </div>
             </div>
         </div>
         <div class="card-body" style="height:700px;">
-            <div id="listFeature" style="height:700px;"></div>
+            <div id="listFeatureRole" style="height:700px;"></div>
         </div>
     </div>
 </section>
 
 <script src="~/LTEplugins/jsgrid/jsgrid.min.js"></script>
+<script src="~/LTEplugins/select2/js/select2.full.min.js"></script>
 <script>
-    $(function () {
-        $("#listFeature").jsGrid({
+
+    let featureRoles = [];
+    let features = [];
+
+    $(document).ready(() => {
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        });
+
+        $("#UserID").on('change', () => {
+            $("#searchButton").trigger('click');
+        });
+
+        $.ajax({
+            url: "@Url.Action("GetAllAsyncToList","Feature")",
+            success: (respone) => {
+                console.log(respone);
+                features = respone;
+            }
+        }).done(() => {
+            renderGrid();
+        });
+
+    });
+
+    function renderGrid() {
+        $("#listFeatureRole").jsGrid({
             height: "100%",
             width: "100%",
             paging: true,
-            autoload: true,
             pagerFormat: "Trang: {first} {prev} {pages} {next} {last}    {pageIndex} of {pageCount}",
             pagePrevText: "Trước",
             pageNextText: "Tiếp",
             pageNavigatorNextText: "...",
             pageNavigatorPrevText: "...",
             editing: true,
+            autoload: true,
+            data: featureRoles,
             inserting: true,
             deleteConfirm: "Bạn Có Chắc Muốn Xóa",
             reloadAfterSubmit: true,
             pageSize: 15,
             pageButtonCount: 5,
             controller: {
-                loadData: function() {
-                    var d = $.Deferred();
-                    $.ajax({
-                        type:"POST",
-                        url: '@Url.Action("GetAllAsyncToList","Feature")'
-                    }).done(function (response) {
-                        console.log(response);
-                        d.resolve(response);
-                    });
-                    return d.promise();
-                },
                 insertItem: function (item) {
+                    item.UserID = $("#UserID").children("option:selected").val();
                     $.ajax({
                         type: "POST",
-                        url: '@Url.Action("Create","Feature")',
+                        url: '@Url.Action("Create","FeatureRole")',
                         data: item
                     }).done(function (respone) {
                         console.log(respone);
                         $.notify(respone.note, respone.messageType);
-                        $("#reloadButton").trigger('click');
                     });
                 },
                 updateItem: function (item) {
                     $.ajax({
                         type: "POST",
-                        url: '@Url.Action("Update","Feature")',
+                        url: '@Url.Action("Update","FeatureRole")',
                         data: item
                     }).done(function (respone) {
                         console.log(respone);
                         $.notify(respone.note, respone.messageType);
-                        $("#reloadButton").trigger('click');
                     });
                 },
                 deleteItem: function (item) {
                     $.ajax({
                         type: "POST",
-                        url: '@Url.Action("Delete","Feature")',
+                        url: '@Url.Action("Delete","FeatureRole")',
                         data: item
                     }).done(function (respone) {
                         console.log(respone);
                         $.notify(respone.note, respone.messageType);
-                        $("#reloadButton").trigger('click');
                     });
                 }
             },
 
             fields: [
                 { name: "id", type: "number", title: "Id", with: 100, editing: false, inserting: false },
-                { name: "name", type: "text", title:"Tên" , with:300 },
-                { name: "parentFeatureID", type: "number", title:"Cấp Trên" , with:200 },
-                { name: "controller", type: "text", title: "Controller",with:200 },
-                { name: "action", type: "text", title: "Action",with:300 },
-                { name: "icon", type: "text", title: "Icon",with:200 },
-                { name: "sortOrder", type: "number", title: "Thứ Tự",with:200 },
-                { name: "isMenuLeft", type: "checkbox", title: "Menu Left", with: 80 },
-                { name: "createDate", type: "text", title: "Ngày Tạo", with: 200, editing: false, inserting: false },
-                { name: "createUser", type: "text", title: "Người Tạo",with:300, editing: false, inserting: false },
-                { name: "updateDate", type: "text", title: "Ngày Sửa", with: 200, editing: false, inserting: false },
-                { name: "updateUser", type: "text", title: "Người Tạo",with:300, editing: false, inserting: false },
+                { name: "featureID", type: "select", title: "Tên Chức Năng", items: features, valueField: "id", textField: "name", with:300 },
+                { name: "isAllow", type: "checkbox", title:"Truy Cập" , with:300 },
                 { type: "control" }
             ]
         });
-    });
+    }
+
+    function onInitFeatureRole() {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("InitializeUserFeatureRole","FeatureRole")',
+            success: (respone) => {
+                featureRoles = respone;
+                console.log(featureRoles);
+                renderGrid();
+            }
+        });
+    }
+
+    function onSearchUserFeatureRole() {
+         $.ajax({
+            type: 'GET',
+            url: '@Url.Action("GetFeatureByUserID","FeatureRole")',
+            data: {
+                UserID: $("#UserID").children("option:selected").val(),
+            },
+            success: (respone) => {
+                featureRoles = respone;
+                console.log(featureRoles);
+                renderGrid();
+            }
+        });
+    }
+
+    function onSaveChange() {
+
+    }
 </script>

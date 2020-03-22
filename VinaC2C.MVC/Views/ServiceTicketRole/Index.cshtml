@@ -1,0 +1,165 @@
+﻿
+@{
+    ViewData["Title"] = "Phân Quyền Gói Dịch Vụ";
+    Layout = "~/Views/Shared/_AdminLTELayout.cshtml";
+}
+@model VinaC2C.MVC.Models.ServiceTicketRoleModel;
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Phân Quyền Gói Dịch Vụ</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Trang Chủ</a></li>
+                    <li class="breadcrumb-item active">Phân Quyền Gói Dịch Vụ</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="card">
+        <div class="card-header container-fluid">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4 col-sm-12 mt-1">
+                        <select class="form-control select2bs4" asp-for="@Model.UserID" asp-items="@Model.userOptions"></select>
+                    </div>
+
+                    <div class="col-md-8 col-sm-12 mt-1">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button id="reloadButton" type="button" class="btn btn-success btn-large" style="flex-basis:20%;" onclick="onSearchServiceTicketRole()">
+                                <i class="fas fa-search h5 m-0 p-0"></i>
+                            </button>
+                            <button id="initButton" type="button" class="btn btn-primary btn-large" style="flex-basis:20%;" onclick="onInitServiceTicketRole()">
+                                <i class="fas fa-file-upload h5 m-0 p-0"></i>
+                            </button>
+                            <div style="flex-basis:35%;">
+                                <div class="icheck-primary">
+                                    <input type="checkbox" id="checkboxPrimary3">
+                                    <label for="checkboxPrimary3">
+                                        Tất Cả
+                                    </label>
+                                </div>
+                            </div>
+                            <button id="initButton" type="button" class="btn btn-primary btn-large" style="flex-basis:20%;" onclick="onInitFeatureRole()">
+                                <i class="fas fa-save h5 m-0 p-0"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header container-fluid">
+            <div class="container-fluid">
+                <div class="row">
+                    <h3 class="card-title mt-2">Danh Sách Gói Dịch Vụ</h3>
+                </div>
+            </div>
+        </div>
+        <div class="card-body" style="height:700px;">
+            <div id="listServiceTicketRole" style="height:700px;"></div>
+        </div>
+    </div>
+</section>
+
+<script src="~/LTEplugins/jsgrid/jsgrid.min.js"></script>
+<script src="~/LTEplugins/select2/js/select2.full.min.js"></script>
+<script>
+
+    let serviceTicketRoles = [];
+    let serviceTickets = [];
+
+    $(document).ready(() => {
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        });
+        $.ajax({
+            url: "@Url.Action("GetAllAsyncToList","ServiceTicket")",
+            success: (respone) => {
+                console.log(respone);
+                serviceTickets = respone;
+            }
+        }).done(() => {
+            renderGrid();
+        });
+    });
+
+    function renderGrid() {
+        $("#listServiceTicketRole").jsGrid({
+            height: "100%",
+            width: "100%",
+            paging: true,
+            pagerFormat: "Trang: {first} {prev} {pages} {next} {last}    {pageIndex} of {pageCount}",
+            pagePrevText: "Trước",
+            pageNextText: "Tiếp",
+            pageNavigatorNextText: "...",
+            pageNavigatorPrevText: "...",
+            editing: true,
+            autoload: true,
+            data: serviceTicketRoles,
+            inserting: true,
+            deleteConfirm: "Bạn Có Chắc Muốn Xóa",
+            reloadAfterSubmit: true,
+            pageSize: 15,
+            pageButtonCount: 5,
+            controller: {
+                insertItem: function (item) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("Create","ServiceTicketRole")',
+                        data: item
+                    }).done(function (respone) {
+                        console.log(respone);
+                        $.notify(respone.note, respone.messageType);
+                    });
+                },
+                updateItem: function (item) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("Update","ServiceTicketRole")',
+                        data: item
+                    }).done(function (respone) {
+                        console.log(respone);
+                        $.notify(respone.note, respone.messageType);
+                    });
+                },
+                deleteItem: function (item) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("Delete","ServiceTicketRole")',
+                        data: item
+                    }).done(function (respone) {
+                        console.log(respone);
+                        $.notify(respone.note, respone.messageType);
+                    });
+                }
+            },
+
+            fields: [
+                { name: "id", type: "number", title: "Id", with: 100, editing: false, inserting: false },
+                { name: "serviceTicketID", type: "select", title: "Gói Dịch Vụ", items: serviceTickets, valueField: "id", textField: "name", with:300 },
+                { name: "expiredDate", type: "text", title: "Ngày Hết Hạn", with:300 },
+                { name: "isAllow", type: "checkbox", title:"Truy Cập" , with:300 },
+                { type: "control" }
+            ]
+        });
+    }
+
+    function onInitServiceTicketRole() {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("InitializeUserServiceTicketRole","ServiceTicketRole")',
+            success: (respone) => {
+                serviceTicketRoles = respone;
+                console.log(serviceTicketRoles);
+                renderGrid();
+            }
+        });
+    }
+</script>

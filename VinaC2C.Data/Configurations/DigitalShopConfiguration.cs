@@ -13,6 +13,8 @@ namespace VinaC2C.Data.Configurations
         {
             builder.ToTable("DigitalShops");
             builder.HasKey(x => x.Id);
+            builder.Property(p => p.Id).UseIdentityColumn();
+            builder.Property(p => p.Id).HasColumnType("bigint");
         }
     }
 }

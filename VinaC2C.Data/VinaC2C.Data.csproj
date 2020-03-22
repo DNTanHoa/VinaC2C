@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200322160528_changekey.cs" />
+    <Compile Remove="Migrations\20200322160528_changekey.Designer.cs" />
+    <Compile Remove="Migrations\20200322161956_recreate.cs" />
+    <Compile Remove="Migrations\20200322161956_recreate.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.SignalR.Core" Version="2.4.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.2">

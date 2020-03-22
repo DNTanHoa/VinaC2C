@@ -6,6 +6,6 @@ namespace VinaC2C.Data.Models
 {
     public class BaseModel
     {
-        public int Id { get; set; }
+        public Int64 Id { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using VinaC2C.Data.DataTransferObject;
 using VinaC2C.Data.Services.Common;
 
 namespace VinaC2C.Data.Services.User
@@ -17,5 +18,9 @@ namespace VinaC2C.Data.Services.User
         public Task<bool> IsExistEmail(string email);
         
         public Task<bool> IsExistUsername(string username);
+
+        public Task<List<UserSelect>> GetForSelectList();
+
+        public Models.User GetByUsername(string username);
     }
 }

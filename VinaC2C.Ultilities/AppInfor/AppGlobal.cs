@@ -293,5 +293,20 @@ namespace VinaC2C.Ultilities.AppInfor
                 return configurationRoot.GetSection("UpdateFailMessage").Value.ToString();
             }
         }
+
+        /// <summary>
+        /// Login Path
+        /// </summary>
+        public static string LoginPath
+        {
+            get
+            {
+                IConfigurationRoot configurationRoot = new ConfigurationBuilder()
+                                                           .SetBasePath(Directory.GetCurrentDirectory())
+                                                           .AddJsonFile("appsettings.json")
+                                                           .Build();
+                return configurationRoot.GetSection("LoginPath").Value.ToString();
+            }
+        }
     }
 }
