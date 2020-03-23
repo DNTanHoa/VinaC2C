@@ -31,15 +31,44 @@
                 </div>
             </div>
         </div>
-        <div class="card-body" style="height:700px;">
-            <div id="listFeature" style="height:700px;"></div>
+        <div class="card-body" style="height:700px; width:100%;">
+            <div id="listFeature" style="height:700px; width:100%;"></div>
         </div>
     </div>
 </section>
 
 <script src="~/LTEplugins/jsgrid/jsgrid.min.js"></script>
 <script>
-    $(function () {
+
+    let features = [
+        {
+            id: 0,
+            name: 'root'
+        }
+    ];
+
+    $(document).ready(() => {
+        getFeatures();
+    });
+
+    function getFeatures() {
+        $.ajax({
+            url: "@Url.Action("GetAllAsyncToList","Feature")",
+            success: (respone) => {
+                console.log(respone);
+                features = [
+                    {
+                        id: 0,
+                        name: 'root'
+                    }];
+                features = features.concat(respone);
+            }
+        }).done(() => {
+            renderGrid();
+        });
+    }
+
+    function renderGrid() {
         $("#listFeature").jsGrid({
             height: "100%",
             width: "100%",
@@ -77,6 +106,7 @@
                         console.log(respone);
                         $.notify(respone.note, respone.messageType);
                         $("#reloadButton").trigger('click');
+                        getFeatures();
                     });
                 },
                 updateItem: function (item) {
@@ -104,20 +134,18 @@
             },
 
             fields: [
-                { name: "id", type: "number", title: "Id", with: 100, editing: false, inserting: false },
-                { name: "name", type: "text", title:"Tên" , with:300 },
-                { name: "parentFeatureID", type: "number", title:"Cấp Trên" , with:200 },
-                { name: "controller", type: "text", title: "Controller",with:200 },
-                { name: "action", type: "text", title: "Action",with:300 },
-                { name: "icon", type: "text", title: "Icon",with:200 },
-                { name: "sortOrder", type: "number", title: "Thứ Tự",with:200 },
-                { name: "isMenuLeft", type: "checkbox", title: "Menu Left", with: 80 },
-                { name: "createDate", type: "text", title: "Ngày Tạo", with: 200, editing: false, inserting: false },
-                { name: "createUser", type: "text", title: "Người Tạo",with:300, editing: false, inserting: false },
-                { name: "updateDate", type: "text", title: "Ngày Sửa", with: 200, editing: false, inserting: false },
-                { name: "updateUser", type: "text", title: "Người Tạo",with:300, editing: false, inserting: false },
+                { type: "control" },
+                { name: "id", type: "number", title: "Id", width: 50, editing: false, inserting: false },
+                { name: "name", type: "text", title: "Tên", width: 200 },
+                { name: "parentFeatureID", type: "select", items: features, valueField: "id", textField: "name", title: "Cấp Trên", width: 200 },
+                { name: "controller", type: "text", title: "Controller",width:100 },
+                { name: "action", type: "text", title: "Action",width:100 },
+                { name: "icon", type: "text", title: "Icon",width:100 },
+                { name: "sortOrder", type: "number", title: "Thứ Tự",width:100 },
+                { name: "isMenuLeft", type: "checkbox", title: "Menu Left", width: 80 },
+                { name: "note", type: "text", title: "Ghi Chú",width:300 },
                 { type: "control" }
             ]
         });
-    });
+    };
 </script>

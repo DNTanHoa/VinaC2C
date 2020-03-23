@@ -6,304 +6,1367 @@
 <html class="no-js" lang="zxx">
 
 <head>
+    <title>VinaC2C - Trang Chủ</title>
     <meta charset="utf-8">
-    <meta name="author" content="Sumon Rahman">
-    <meta name="description" content="">
-    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="~/css/linearicons.css">
-    <link rel="stylesheet" href="~/css/magnific-popup.css">
-    <link rel="stylesheet" href="~/css/animate.css">
-    <link rel="stylesheet" href="~/css/normalize.css">
-    <link rel="stylesheet" href="~/css/homestyle.css">
-    <link rel="stylesheet" href="~/css/responsive.css">
-    <script src="~/js/modernizr-2.8.3.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="./assets/img/others/logo_square.png">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/assets/vendor/font-awesome/css/all.min.css">
+    <link rel="stylesheet" href="~/assets/vendor/hs-mega-menu/dist/hs-mega-menu.min.css">
+    <link rel="stylesheet" href="~/assets/vendor/dzsparallaxer/dzsparallaxer.css">
+    <link rel="stylesheet" href="~/assets/vendor/cubeportfolio/css/cubeportfolio.min.css">
+    <link rel="stylesheet" href="~/assets/vendor/aos/dist/aos.css">
+    <link rel="stylesheet" href="~/assets/css/theme.css">
 </head>
 
 <body data-spy="scroll" data-target=".mainmenu-area">
-    <nav class="mainmenu-area navbar navbar-expand-lg navbar-light" data-spy="affix" data-offset-top="200">
-        <div class="container-fluid d-flex justify-content-around align-items-center">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#"><img src="~/images/logo.png" width="159" height="56" alt="Logo"></a>
-                <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#primary_menu" aria-controls="primary_menu" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" id="primary_menu">
-                <ul class="nav navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                        <a href="#home_page">Trang Chủ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">Tính Năng</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">Dịch Vụ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">Liên Hệ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">Blogs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">Về Chúng Tôi</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">Bảng Giá</a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-action="Detail" asp-controller="User">Đăng Ký</a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-action="Index" asp-controller="User">Đăng Nhập</a>
-                    </li>
-                </ul>
-            </div>
+    <!-- ========== HEADER ========== -->
+    <header id="header" class="header header-box-shadow-on-scroll header-abs-top header-bg-transparent header-show-hide"
+            data-hs-header-options='{ "fixMoment": 1000,"fixEffect": "slide"}'>
+        <div class="header-section">
+            <!-- Topbar -->
+            <div class="container header-hide-content pt-2">
+                <div class="d-flex align-items-center">
+                    <div class="ml-auto">
+                        <!-- Jump To -->
+                        <div class="hs-unfold d-sm-none mr-2">
+                            <a class="js-hs-unfold-invoker dropdown-nav-link dropdown-toggle d-flex align-items-center" href="javascript:;"
+                               data-hs-unfold-options='{
+                                      "target": "#jumpToDropdown",
+                                      "type": "css-animation",
+                                      "event": "hover",
+                                      "hideOnScroll": "true"
+                                     }'>
+                                Chuyển đến
+                            </a>
 
-        </div>
-    </nav>
-    <header class="home-area overlay pb-4" id="home_page">
-        <div class="container">
-            <div class="row mb-4">
-                @*<div class="col-xs-12 hidden-sm col-md-5">
-                    <figure class="mobile-image wow fadeInUp" data-wow-delay="0.2s">
-                        <img src="images/header-mobile.png" alt="">
-                    </figure>
-                </div>*@
-                <div class="col-xs-12">
-                    <h1 class="wow fadeInUp" data-wow-delay="0.4s">Giải Pháp Cho<br>Hàng Trăm Đơn Hàng Mỗi Ngày</h1>
-                    <div class="space-10"></div>
-                    <div class="desc wow fadeInUp" data-wow-delay="0.6s">
-                        <p class="h4" style="line-height:40px;">Chúng Tôi Giúp Bạn Quản Lý Tập Trung Và Bán Hàng Hiệu Quả Trên Các Sàn Thương Mại Điện Tử Nổi Tiếng Như Shopee, Lazada</p>
-                    </div>
-                    <div class="space-20"></div>
-                    <a href="#" class="bttn-white wow fadeInUp" data-wow-delay="0.8s"><i class="lnr lnr-download"></i>Tải Ứng Dụng</a>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- Home-Area-End -->
-    <!-- About-Area -->
-    <section class="section-padding pt-2" id="about_page">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="page-title text-center">
-                        <img src="~/images/logo_square.png" height="80" width="80" alt="About Logo">
-                        <div class="space-20"></div>
-                        <h5 class="title">Về Chúng Tôi</h5>
-                        <div class="space-30"></div>
-                        <h3 class="blue-color">Công Cụ Hỗ Trợ Về Thương Mại Điện Tử</h3>
-                        <div class="space-20"></div>
-                        <p>VinaC2C giúp bạn quản lý tập trung và bán hàng hiệu quả trên sàn TMĐT đầy tiềm năng như Shopee, Lazada, Sendo...Nhờ đó, bạn sẽ quản lý tập trung mọi thông tin bán hàng. Từ đó giúp tiết kiệm thời gian, tập trung toàn diện cho việc xử lý đơn hàng và bán hàng hiệu quả khắp mọi nơi. Và mọi thứ hoàn toàn miễn phí.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- About-Area-End -->
-    <!-- Progress-Area -->
-    <section class="progress-area gray-bg" id="progress_page">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-md-6">
-                    <div class="page-title section-padding">
-                        <h5 class="title wow fadeInUp" data-wow-delay="0.2s">Our Progress</h5>
-                        <div class="space-10"></div>
-                        <h3 class="dark-color wow fadeInUp" data-wow-delay="0.4s">Grat Application Ever</h3>
-                        <div class="space-20"></div>
-                        <div class="desc wow fadeInUp" data-wow-delay="0.6s">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiing elit, sed do eiusmod tempor incididunt ut labore et laborused sed do eiusmod tempor incididunt ut labore et laborused.</p>
-                        </div>
-                        <div class="space-50"></div>
-                        <a href="#" class="bttn-default wow fadeInUp" data-wow-delay="0.8s">Learn More</a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-md-6">
-                    <figure class="mobile-image">
-                        <img src="~/images/progress-phone.png" alt="">
-                    </figure>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Feature-Area -->
-    <section class="feature-area section-padding-top" id="features_page">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="page-title text-center">
-                        <h5 class="title">Features</h5>
-                        <div class="space-10"></div>
-                        <h3>Pwoerful Features As Always</h3>
-                        <div class="space-60"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <div class="service-box wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="box-icon">
-                            <i class="lnr lnr-rocket"></i>
-                        </div>
-                        <h4>Fast &amp; Powerful</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                    </div>
-                    <div class="space-60"></div>
-                    <div class="service-box wow fadeInUp" data-wow-delay="0.4s">
-                        <div class="box-icon">
-                            <i class="lnr lnr-paperclip"></i>
-                        </div>
-                        <h4>Easily Editable</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                    </div>
-                    <div class="space-60"></div>
-                    <div class="service-box wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="box-icon">
-                            <i class="lnr lnr-cloud-download"></i>
-                        </div>
-                        <h4>Cloud Storage</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                    </div>
-                    <div class="space-60"></div>
-                </div>
-                <div class="hidden-xs hidden-sm col-md-4">
-                    <figure class="mobile-image">
-                        <img src="~/images/feature-image.png" alt="Feature Photo">
-                    </figure>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <div class="service-box wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="box-icon">
-                            <i class="lnr lnr-clock"></i>
-                        </div>
-                        <h4>Easy Notifications</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                    </div>
-                    <div class="space-60"></div>
-                    <div class="service-box wow fadeInUp" data-wow-delay="0.4s">
-                        <div class="box-icon">
-                            <i class="lnr lnr-laptop-phone"></i>
-                        </div>
-                        <h4>Fully Responsive</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                    </div>
-                    <div class="space-60"></div>
-                    <div class="service-box wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="box-icon">
-                            <i class="lnr lnr-cog"></i>
-                        </div>
-                        <h4>Editable Layout</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                    </div>
-                    <div class="space-60"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Subscribe-Form -->
-    <div class="subscribe-area section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="subscribe-form text-center">
-                        <h3 class="blue-color">Subscribe for More Features</h3>
-                        <div class="space-20"></div>
-                        <form id="mc-form">
-                            <input type="email" class="control" placeholder="Enter your email" required="required" id="mc-email">
-                            <button class="bttn-white active" type="submit"><span class="lnr lnr-location"></span> Subscribe</button>
-                            <label class="mt10" for="mc-email"></label>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <footer class="footer-area" id="contact_page">
-        <div class="section-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="page-title text-center">
-                            <h5 class="title">Liên Hệ</h5>
-                            <h3 class="dark-color">Hãy Tìm Chúng Tôi</h3>
-                            <div class="space-60"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-4">
-                        <div class="footer-box">
-                            <div class="box-icon">
-                                <span class="lnr lnr-map-marker"></span>
+                            <div id="jumpToDropdown" class="hs-unfold-content dropdown-menu">
+                                <a class="dropdown-item" href="#">Hỗ trợ</a>
+                                <a class="dropdown-item" href="#">Liên hệ</a>
+                                <a class="dropdown-item" asp-action="Index" asp-controller="User">Đăng nhập</a>
+                                <a class="dropdown-item" href="#">Đăng kí</a>
                             </div>
-                            <p>8-54 Paya Lebar Square <br /> 60 Paya Lebar Roa SG, Singapore</p>
                         </div>
-                        <div class="space-30 hidden visible-xs"></div>
-                    </div>
-                    <div class="col-xs-12 col-sm-4">
-                        <div class="footer-box">
-                            <div class="box-icon">
-                                <span class="lnr lnr-phone-handset"></span>
-                            </div>
-                            <p>+65 93901336 <br /> +65 93901337</p>
-                        </div>
-                        <div class="space-30 hidden visible-xs"></div>
-                    </div>
-                    <div class="col-xs-12 col-sm-4">
-                        <div class="footer-box">
-                            <div class="box-icon">
-                                <span class="lnr lnr-envelope"></span>
-                            </div>
-                            <p>
-                                yourmail@gmail.com <br /> backpiper.com@gmail.com
-                            </p>
+                        <div class="nav nav-sm nav-y-0 d-none d-sm-flex ml-sm-auto">
+                            <a class="nav-link" href="#">Hỗ trợ</a>
+                            <a class="nav-link" href="#">Liên hệ</a>
+                            <a class="nav-link" asp-action="Index" asp-controller="User">Đăng nhập</a>
+                            <a class="nav-link" href="#">Đăng kí</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Footer-Bootom -->
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12 col-md-5">
-                        <span>Bản Quyền &copy; @DateTime.Now.Year VinaC2C. Bảo Lưu Toàn Bộ Bản Quyền </span>
-                    </div>
-                    <div class="col-xs-12 col-md-7">
-                        <div class="footer-menu">
-                            <ul>
-                                <li><a href="#">Về Chúng Tôi</a></li>
-                                <li><a href="#">Tính Năng</a></li>
-                                <li><a href="#">Dịch Vụ</a></li>
-                                <li><a href="#">Liên Hệ</a></li>
-                                <li><a href="#">Blogs</a></li>
+            <div id="logoAndNav" class="container">
+                <!-- Nav -->
+                <nav class="js-mega-menu navbar navbar-expand-lg">
+                    <!-- Logo -->
+                    <a class="navbar-brand" href="index.html" aria-label="Front">
+                        <img src="./assets/img/others/logo.png" alt="Logo">
+                    </a>
+                    <!-- End Logo -->
+                    <!-- Responsive Toggle Button -->
+                    <button type="button" class="navbar-toggler btn btn-icon btn-sm rounded-circle"
+                            aria-label="Toggle navigation"
+                            aria-expanded="false"
+                            aria-controls="navBar"
+                            data-toggle="collapse"
+                            data-target="#navBar">
+                        <span class="navbar-toggler-default">
+                            <svg width="14" height="14" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                                <path fill="currentColor" d="M17.4,6.2H0.6C0.3,6.2,0,5.9,0,5.5V4.1c0-0.4,0.3-0.7,0.6-0.7h16.9c0.3,0,0.6,0.3,0.6,0.7v1.4C18,5.9,17.7,6.2,17.4,6.2z M17.4,14.1H0.6c-0.3,0-0.6-0.3-0.6-0.7V12c0-0.4,0.3-0.7,0.6-0.7h16.9c0.3,0,0.6,0.3,0.6,0.7v1.4C18,13.7,17.7,14.1,17.4,14.1z" />
+                            </svg>
+                        </span>
+                        <span class="navbar-toggler-toggled">
+                            <svg width="14" height="14" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                                <path fill="currentColor" d="M11.5,9.5l5-5c0.2-0.2,0.2-0.6-0.1-0.9l-1-1c-0.3-0.3-0.7-0.3-0.9-0.1l-5,5l-5-5C4.3,2.3,3.9,2.4,3.6,2.6l-1,1 C2.4,3.9,2.3,4.3,2.5,4.5l5,5l-5,5c-0.2,0.2-0.2,0.6,0.1,0.9l1,1c0.3,0.3,0.7,0.3,0.9,0.1l5-5l5,5c0.2,0.2,0.6,0.2,0.9-0.1l1-1 c0.3-0.3,0.3-0.7,0.1-0.9L11.5,9.5z" />
+                            </svg>
+                        </span>
+                    </button>
+                    <!-- End Responsive Toggle Button -->
+                    <!-- Navigation -->
+                    <div id="navBar" class="collapse navbar-collapse">
+                        <div class="navbar-body header-abs-top-inner">
+                            <ul class="navbar-nav">
+
+                                <!-- Tính năng -->
+                                <li class="hs-has-mega-menu navbar-nav-item"
+                                    data-hs-mega-menu-item-options='{
+                                      "desktop": {
+                                        "position": "right",
+                                        "maxWidth": "900px"
+                                      }
+                                    }'>
+                                    <a id="demosMegaMenu" class="hs-mega-menu-invoker nav-link nav-link-toggle" href="javascript:;" aria-haspopup="true" aria-expanded="false">Tính năng</a>
+
+                                    <!-- Tính năng - Mega Menu -->
+                                    <div class="hs-mega-menu dropdown-menu w-100" aria-labelledby="demosMegaMenu">
+                                        <div class="row no-gutters">
+                                            <div class="col-lg-8">
+                                                <div class="navbar-promo-card-deck">
+                                                    <!-- Promo Item -->
+                                                    <div class="navbar-promo-card navbar-promo-item">
+                                                        <span class="navbar-promo-link">
+                                                            <div class="media align-items-center">
+                                                                <img class="navbar-promo-icon" src="./assets/svg/icons/icon-65.svg" alt="SVG">
+                                                                <div class="media-body">
+                                                                    <span class="navbar-promo-title">Quản lí Shop</span>
+                                                                    <span class="navbar-promo-text">Quản lí danh sách shop của bạn tập trung ở một nơi duy nhất.</span>
+                                                                </div>
+                                                            </div>
+                                                        </span>
+                                                    </div>
+                                                    <!-- End Promo Item -->
+                                                    <!-- Promo Item -->
+                                                    <div class="navbar-promo-card navbar-promo-item">
+                                                        <span class="navbar-promo-link">
+                                                            <div class="media align-items-center">
+                                                                <img class="navbar-promo-icon" src="./assets/svg/icons/icon-1.svg" alt="SVG">
+                                                                <div class="media-body">
+                                                                    <span class="navbar-promo-title">Quản lý đơn hàng</span>
+                                                                    <span class="navbar-promo-text">Hiển thị thông tin đơn hàng, luôn thông báo khi có đơn hàng mới.</span>
+                                                                </div>
+                                                            </div>
+                                                        </span>
+                                                    </div>
+                                                    <!-- End Promo Item -->
+                                                </div>
+
+                                                <div class="navbar-promo-card-deck">
+                                                    <!-- Promo Item -->
+                                                    <div class="navbar-promo-card navbar-promo-item">
+                                                        <span class="navbar-promo-link">
+                                                            <div class="media align-items-center">
+                                                                <img class="navbar-promo-icon" src="./assets/svg/icons/icon-2.svg" alt="SVG">
+                                                                <div class="media-body">
+                                                                    <span class="navbar-promo-title">Quản lý sản phẩm</span>
+                                                                    <span class="navbar-promo-text">Tạo, sao chép, đăng hàng loạt...sản phẩm. Chỉ 1 lần đăng cho nhiều sản TMĐT.</span>
+                                                                </div>
+                                                            </div>
+                                                        </span>
+                                                    </div>
+                                                    <!-- End Promo Item -->
+                                                    <!-- Promo Item -->
+                                                    <div class="navbar-promo-card navbar-promo-item">
+                                                        <span class="navbar-promo-link">
+                                                            <div class="media align-items-center">
+                                                                <img class="navbar-promo-icon" src="./assets/svg/icons/icon-4.svg" alt="SVG">
+                                                                <div class="media-body">
+                                                                    <span class="navbar-promo-title">Tăng tương tác</span>
+                                                                    <span class="navbar-promo-text">Nhắn tin tới hàng trăm, hàng ngàn khách hàng cũ để thông báo khuyến mãi, sản phẩm mới.</span>
+                                                                </div>
+                                                            </div>
+                                                        </span>
+                                                    </div>
+                                                    <!-- End Promo Item -->
+                                                </div>
+
+                                                <div class="navbar-promo-card-deck">
+                                                    <!-- Promo Item -->
+                                                    <div class="navbar-promo-card navbar-promo-item">
+                                                        <span class="navbar-promo-link">
+                                                            <div class="media align-items-center">
+                                                                <img class="navbar-promo-icon" src="./assets/svg/icons/icon-5.svg" alt="SVG">
+                                                                <div class="media-body">
+                                                                    <span class="navbar-promo-title">Thống kê hàng ngày</span>
+                                                                    <span class="navbar-promo-text">Số lượng đơn hàng, lượng tồn kho, doanh thu,...sẽ được VinaC2C thống kê lại cho bạn.</span>
+                                                                </div>
+                                                            </div>
+                                                        </span>
+                                                    </div>
+                                                    <!-- End Promo Item -->
+                                                    <!-- Promo Item -->
+                                                    <div class="navbar-promo-card navbar-promo-item">
+                                                        <span class="navbar-promo-link">
+                                                            <div class="media align-items-center">
+                                                                <img class="navbar-promo-icon" src="./assets/svg/icons/icon-26.svg" alt="SVG">
+                                                                <div class="media-body">
+                                                                    <span class="navbar-promo-title">Và còn nhiều hơn nữa...</span>
+                                                                    <span class="navbar-promo-text">VinaC2C bao gồm một hệ thống quản lí bán hàng chuyên nghiệp dành cho bạn.</span>
+                                                                </div>
+                                                            </div>
+                                                        </span>
+                                                    </div>
+                                                    <!-- End Promo Item -->
+                                                </div>
+                                            </div>
+
+                                            <!-- Promo -->
+                                            <div class="col-lg-4 navbar-promo d-none d-lg-block">
+                                                <span class="d-block navbar-promo-inner">
+                                                    <div class="position-relative">
+                                                        <img class="img-fluid rounded mb-3" src="./assets/img/380x227/img1.jpg" alt="Image Description">
+                                                    </div>
+                                                    <span class="navbar-promo-text font-size-1">Các tính năng luôn được cập nhật mới nhất để phục vụ đến bạn</span>
+                                                </span>
+                                            </div>
+                                            <!-- End Promo -->
+                                        </div>
+                                    </div>
+                                    <!-- End tính năng - Mega Menu -->
+                                </li>
+                                <!-- End Tính năng -->
+                                <!-- Bảng giá -->
+                                <li class="hs-has-mega-menu navbar-nav-item">
+                                    <a id="homeMegaMenu" class="hs-mega-menu-invoker nav-link nav-link-toggle" href="javascript:;" aria-haspopup="true" aria-expanded="false">Bảng giá dịch vụ</a>
+
+                                    <!-- Bảng giá - Mega Menu -->
+                                    <div class="hs-mega-menu dropdown-menu w-100" aria-labelledby="homeMegaMenu">
+                                        <div class="row no-gutters">
+                                            <div class="col-lg-6">
+                                                <!-- Banner Image -->
+                                                <div class="navbar-banner" style="background-image: url(./assets/img/750x750/img1.jpg);">
+                                                    <div class="navbar-banner-content">
+                                                        <div class="mb-4">
+                                                            <span class="h2 d-block text-white">Chúng tôi cung cấp</span>
+                                                            <p class="text-white">Giải pháp cho hàng trăm đơn hàng mỗi ngày</p>
+                                                        </div>
+                                                        <a class="btn btn-primary btn-sm transition-3d-hover" href="#">Bắt đầu sử dụng <i class="fas fa-angle-right fa-sm ml-1"></i></a>
+                                                    </div>
+                                                </div>
+                                                <!-- End Banner Image -->
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <div class="row mega-menu-body">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <a class="d-block h5" href="#">Gói tiêu chuẩn 0<sup>đ</sup></a>
+                                                        <span class="d-block">Quản lý nhiều shop trên Shopee</span>
+                                                        <span class="d-block">Sử dụng tất cả các tính năng</span>
+                                                        <span class="d-block">Hỗ trợ trực tuyến</span>
+                                                        <br>
+                                                        <a class="d-block h5" href="#">Gói PRO 69,000<sup>đ</sup><span class="badge badge-primary badge-pill ml-3">Hot</span></a>
+                                                        <div class="mb-3">
+                                                            <span class="d-block">Quản lý nhiều shop trên Shopee</span>
+                                                            <span class="d-block">Quản lý thêm nhiều shop trên 1 sàn TMĐT khác tự chọn</span>
+                                                            <span class="d-block">Sử dụng tất cả các tính năng</span>
+                                                            <span class="d-block">Hỗ trợ trực tuyến</span>
+                                                        </div>
+                                                        <br>
+                                                        <a class="d-block h5" href="#">Gói VIP 79,000<sup>đ</sup></a>
+                                                        <div class="mb-3">
+                                                            <span class="d-block">Quản lý nhiều shop trên tất cả các sàn TMĐT</span>
+                                                            <span class="d-block">Sử dụng tất cả tính năng của VinaC2C</span>
+                                                            <span class="d-block">Hỗ trợ trực tuyến dành cho khách hàng VIP</span>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Bảng giá - Mega Menu -->
+                                </li>
+                                <!-- End Bảng giá -->
+                                <!-- Tài liệu -->
+                                <!-- Tài liệu -->
+                                <li class="hs-has-mega-menu navbar-nav-item"
+                                    data-hs-mega-menu-item-options='{
+                      "desktop": {
+                        "position": "right",
+                        "maxWidth": "260px"
+                      }
+                    }'>
+                                    <a id="docsMegaMenu" class="hs-mega-menu-invoker nav-link nav-link-toggle" href="javascript:;" aria-haspopup="true" aria-expanded="false">Tài liệu</a>
+
+                                    <!-- Tài liệu - Submenu -->
+                                    <div class="hs-mega-menu dropdown-menu" aria-labelledby="docsMegaMenu" style="min-width: 330px;">
+                                        <!-- Promo Item -->
+                                        <div class="navbar-promo-item">
+                                            <a class="navbar-promo-link" href="#">
+                                                <div class="media align-items-center">
+                                                    <img class="navbar-promo-icon" src="./assets/svg/icons/icon-2.svg" alt="SVG">
+                                                    <div class="media-body">
+                                                        <span class="navbar-promo-title">
+                                                            Tài liệu bán hàng
+                                                            <!-- <span class="badge badge-primary badge-pill ml-1">v3.0</span>-->
+                                                        </span>
+                                                        <small class="navbar-promo-text">Tổng hợp tài liệu hướng dẫn bán hàng</small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <!-- End Promo Item -->
+                                        <!-- Promo Item -->
+                                        <div class="navbar-promo-item">
+                                            <a class="navbar-promo-link" href="#">
+                                                <div class="media align-items-center">
+                                                    <img class="navbar-promo-icon" src="./assets/svg/icons/icon-12.svg" alt="SVG">
+                                                    <div class="media-body">
+                                                        <span class="navbar-promo-title">Hướng dẫn sử dụng</span>
+                                                        <small class="navbar-promo-text">Các hướng dẫn sử dụng công cụ VinaC2C</small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <!-- End Promo Item -->
+                                        <!-- Promo Item -->
+                                        <div class="navbar-promo-item">
+                                            <a class="navbar-promo-link" href="#">
+                                                <div class="media align-items-center">
+                                                    <img class="navbar-promo-icon" src="./assets/svg/icons/icon-48.svg" alt="SVG">
+                                                    <div class="media-body">
+                                                        <span class="navbar-promo-title">Blog</span>
+                                                        <small class="navbar-promo-text">Nơi trao đổi thảo luận</small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <!-- End Promo Item -->
+
+                                        <div class="navbar-promo-footer">
+                                            <!-- List -->
+                                            <div class="row no-gutters">
+                                                <div class="col-6">
+                                                    <div class="navbar-promo-footer-item">
+                                                        <span class="navbar-promo-footer-text">Có gì mới?</span>
+                                                        <a class="navbar-promo-footer-text" href="#">
+                                                            Lịch sử phiên bản
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 navbar-promo-footer-ver-divider">
+                                                    <div class="navbar-promo-footer-item">
+                                                        <span class="navbar-promo-footer-text">Bạn có câu hỏi?</span>
+                                                        <a class="navbar-promo-footer-text" href="#">
+                                                            Liên hệ chúng tôi
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End List -->
+                                        </div>
+                                    </div>
+                                    <!-- End Docs - Submenu -->
+                                </li>
+                                <!-- End Docs -->
+                                <!-- Button -->
+                                <li class="navbar-nav-last-item">
+                                    <a class="btn btn-sm btn-primary transition-3d-hover" href="#" target="_blank">
+                                        Kênh bán hàng
+                                    </a>
+                                </li>
+                                <!-- End Button -->
                             </ul>
                         </div>
                     </div>
+                    <!-- End Navigation -->
+                </nav>
+                <!-- End Nav -->
+            </div>
+        </div>
+    </header>
+    <!-- ========== END HEADER ========== -->
+    <!-- ========== MAIN CONTENT ========== -->
+    <main id="content" role="main">
+        <!-- Hero Section -->
+        <div class="d-lg-flex position-relative">
+            <div class="container d-lg-flex align-items-lg-center space-top-2 space-lg-0 min-vh-lg-100">
+                <!-- Content -->
+                <div class="w-md-100">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <div class="mb-5 mt-11">
+                                <h1 class="display-4 mb-3">
+                                    Bạn là người bán hàng trên
+                                    <span class="text-indigo font-weight-bold">
+                                        <span class="js-text-animation"></span>
+                                    </span>
+                                    <br>
+                                </h1>
+                                <p class="lead">Chúng tôi giúp bạn quản lý tập trung và bán hàng hiệu quả trên các sàn Thương mại điện tử nổi tiếng như Shopee, Lazada, Sendo, Tiki...</p>
+                            </div>
+
+                            <a class="btn btn-primary btn-wide transition-3d-hover" href="#">Bắt đầu ngay</a>
+                            <a class="btn btn-link btn-wide" href="#">Xem thêm <i class="fas fa-angle-right fa-sm ml-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Content -->
+                <!-- SVG Shape -->
+                <figure class="col-lg-7 col-xl-6 d-none d-lg-block position-absolute top-0 right-0 pr-0 ie-main-hero" style="margin-top: 6.75rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1137.5 979.2">
+                        <path fill="#F9FBFF" d="M565.5,957.4c81.1-7.4,155.5-49.3,202.4-115.7C840,739.8,857,570,510.7,348.3C-35.5-1.5-4.2,340.3,2.7,389
+              c0.7,4.7,1.2,9.5,1.7,14.2l29.3,321c14,154.2,150.6,267.8,304.9,253.8L565.5,957.4z" />
+                        <defs>
+                            <path id="mainHeroSVG1" d="M1137.5,0H450.4l-278,279.7C22.4,430.6,24.3,675,176.8,823.5l0,0C316.9,960,537.7,968.7,688.2,843.6l449.3-373.4V0z" />
+                        </defs>
+                        <clipPath id="mainHeroSVG2">
+                            <use xlink:href="#mainHeroSVG1" />
+                        </clipPath>
+                        <g transform="matrix(1 0 0 1 0 0)" clip-path="url(#mainHeroSVG2)">
+                            <image width="750" height="750" xlink:href="./assets/img/750x750/img2.jpg" transform="matrix(1.4462 0 0 1.4448 52.8755 0)"></image>
+                        </g>
+                    </svg>
+                </figure>
+                <!-- End SVG Shape -->
+            </div>
+        </div>
+        <!-- End Hero Section -->
+        <!-- Features Section -->
+        <div class="bg-light">
+            <div class="container space-2 space-lg-3">
+                <!-- Title -->
+                <div class="w-md-80 w-lg-50 text-center mx-md-auto mb-5 mb-md-9">
+                    <span class="d-block small font-weight-bold text-cap mb-2">VinaC2C là gì?</span>
+                    <h2>Cách nhanh nhất và dễ dàng nhất để bán hàng online trên trang TMĐT</h2>
+                </div>
+                <!-- End Title -->
+
+                <div class="row">
+                    <div class="col-lg-5 order-lg-2 mb-7 mb-lg-0">
+                        <!-- Nav -->
+                        <ul class="nav nav-box" role="tablist">
+                            <li class="nav-item w-100 mx-0 mb-3">
+                                <a class="nav-link p-4 active" id="pills-one-code-features-tab" data-toggle="pill" href="#pills-one-code-features" role="tab" aria-controls="pills-one-code-features" aria-selected="true">
+                                    <div class="media align-items-center align-items-lg-start">
+                                        <figure class="w-100 max-w-6rem mt-2 mr-4">
+                                            <img class="img-fluid" src="./assets/svg/icons/icon-23.svg" alt="SVG">
+                                        </figure>
+                                        <div class="media-body">
+                                            <h4 class="mb-0">Dễ dàng sử dụng</h4>
+                                            <div class="d-none d-lg-block mt-2">
+                                                <p class="text-body mb-0">Không cần biết quá nhiều về sàn TMĐT.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li class="nav-item w-100 mx-0 mb-3">
+                                <a class="nav-link p-4" id="pills-two-code-features-tab" data-toggle="pill" href="#pills-two-code-features" role="tab" aria-controls="pills-two-code-features" aria-selected="false">
+                                    <div class="media align-items-center align-items-lg-start">
+                                        <figure class="w-100 max-w-6rem mt-2 mr-4">
+                                            <img class="img-fluid" src="./assets/svg/icons/icon-38.svg" alt="SVG">
+                                        </figure>
+                                        <div class="media-body">
+                                            <h4 class="mb-0">Hoàn toàn bảo mật</h4>
+                                            <div class="d-none d-lg-block mt-2">
+                                                <p class="text-body mb-0">Bạn không cần phải nhập mật khẩu của shop vẫn có thể kết nối tới trang TMĐT.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li class="nav-item w-100 mx-0">
+                                <a class="nav-link p-4" id="pills-three-code-features-tab" data-toggle="pill" href="#pills-three-code-features" role="tab" aria-controls="pills-three-code-features" aria-selected="false">
+                                    <div class="media align-items-center align-items-lg-start">
+                                        <figure class="w-100 max-w-6rem mt-2 mr-4">
+                                            <img class="img-fluid" src="./assets/svg/icons/icon-5.svg" alt="SVG">
+                                        </figure>
+                                        <div class="media-body">
+                                            <h4 class="mb-0">Chi phí rẻ</h4>
+                                            <div class="d-none d-lg-block mt-2">
+                                                <p class="text-body mb-0">Thậm chí là miễn phí cho người bán Shopee.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- End Nav -->
+                    </div>
+
+                    <div class="col-lg-7 order-lg-1 align-self-lg-end">
+                        <!-- Tab Content -->
+                        <div class="tab-content pr-lg-4">
+                            <div class="tab-pane fade show active" id="pills-one-code-features" role="tabpanel" aria-labelledby="pills-one-code-features-tab">
+                                <!-- Device Mockup -->
+                                <div class="device">
+                                    <img class="img-fluid" src="./assets/svg/components/macbook.svg" alt="Image Description">
+                                    <img class="device-macbook-screen" src="./assets/img/1618x1010/img5.jpg" alt="Image Description">
+                                </div>
+                                <!-- End Device Mockup -->
+                            </div>
+
+                            <div class="tab-pane fade" id="pills-two-code-features" role="tabpanel" aria-labelledby="pills-two-code-features-tab">
+                                <div class="shadow-sm rounded">
+                                    <img class="avatar-img rounded-lg" src="./assets/img/1618x1010/img3.jpg" alt="Image Description">
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="pills-three-code-features" role="tabpanel" aria-labelledby="pills-three-code-features-tab">
+                                <!-- Device Mockup -->
+                                <div class="device-wrapper">
+                                    <div class="device">
+                                        <img class="img-fluid" src="./assets/svg/components/macbook.svg" alt="Image Description">
+                                        <img class="device-macbook-screen" src="./assets/img/1618x1010/img4.jpg" alt="Image Description">
+                                    </div>
+                                    <div class="device device-iphone-x">
+                                        <img class="device-iphone-x-frame" src="./assets/svg/components/iphone-x.svg" alt="Image Description">
+                                        <img class="device-iphone-x-screen" src="./assets/img/407x867/img7.jpg" alt="Image Description">
+                                    </div>
+                                </div>
+                                <!-- End Device Mockup -->
+                            </div>
+                        </div>
+                        <!-- End Tab Content -->
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- Footer-Bootom-End -->
+        <!-- End Features Section -->
+        <!-- Icon Blocks Section -->
+        <div class="overflow-hidden">
+            <div class="container space-2 space-top-lg-3 position-relative">
+                <!-- Title -->
+                <div class="w-md-80 w-lg-50 text-center mx-md-auto mb-5 mb-md-9">
+                    <span class="d-block small font-weight-bold text-cap mb-2">Chúng tôi hỗ trợ những gì?</span>
+                    <h2>VinaC2C bao gồm các tính năng hỗ trợ bán hàng trên các sàn TMĐT phổ biến</h2>
+                </div>
+                <!-- End Title -->
+
+                <div class="row">
+                    <div class="col-sm-4 mb-3 mb-sm-5">
+                        <!-- Icon Blocks -->
+                        <div class="pr-lg-6">
+                            <figure class="max-w-6rem w-100 mb-3">
+                                <img class="img-fluid" src="./assets/svg/icons/icon-65.svg" alt="SVG">
+                            </figure>
+                            <h4>Quản lí Shop</h4>
+                            <p>Quản lí danh sách shop của bạn tập trung ở một nơi duy nhất.</p>
+                        </div>
+                        <!-- End Icon Blocks -->
+                    </div>
+
+                    <div class="col-sm-4 mb-3 mb-sm-5">
+                        <!-- Icon Blocks -->
+                        <div class="pr-lg-6">
+                            <figure class="max-w-6rem w-100 mb-3">
+                                <img class="img-fluid" src="./assets/svg/icons/icon-1.svg" alt="SVG">
+                            </figure>
+                            <h4>Quản lý đơn hàng</h4>
+                            <p>Hiển thị thông tin đơn hàng, luôn thông báo khi có đơn hàng mới.</p>
+                        </div>
+                        <!-- End Icon Blocks -->
+                    </div>
+
+                    <div class="col-sm-4 mb-3 mb-sm-5">
+                        <!-- Icon Blocks -->
+                        <div class="pr-lg-6">
+                            <figure class="max-w-6rem w-100 mb-3">
+                                <img class="img-fluid" src="./assets/svg/icons/icon-2.svg" alt="SVG">
+                            </figure>
+                            <h4>Quản lý sản phẩm</h4>
+                            <p>Tạo, sao chép, đăng hàng loạt...sản phẩm. Chỉ 1 lần đăng cho nhiều sản TMĐT.</p>
+                        </div>
+                        <!-- End Icon Blocks -->
+                    </div>
+
+                    <div class="col-sm-4 mb-3 mb-sm-5 mb-sm-0">
+                        <!-- Icon Blocks -->
+                        <div class="pr-lg-6">
+                            <figure class="max-w-6rem w-100 mb-3">
+                                <img class="img-fluid" src="./assets/svg/icons/icon-4.svg" alt="SVG">
+                            </figure>
+                            <h4>Tăng tương tác</h4>
+                            <p>Nhắn tin tới hàng trăm, hàng ngàn khách hàng cũ để thông báo khuyến mãi, sản phẩm mới.</p>
+                        </div>
+                        <!-- End Icon Blocks -->
+                    </div>
+
+                    <div class="col-sm-4 mb-3 mb-sm-0">
+                        <!-- Icon Blocks -->
+                        <div class="pr-lg-6">
+                            <figure class="max-w-6rem w-100 mb-3">
+                                <img class="img-fluid" src="./assets/svg/icons/icon-5.svg" alt="SVG">
+                            </figure>
+                            <h4>Thống kê hàng ngày</h4>
+                            <p>Số lượng đơn hàng, lượng tồn kho, doanh thu,...sẽ được VinaC2C thống kê lại cho bạn.</p>
+                        </div>
+                        <!-- End Icon Blocks -->
+                    </div>
+
+                    <div class="col-sm-4">
+                        <!-- Icon Blocks -->
+                        <div class="pr-lg-6">
+                            <figure class="max-w-6rem w-100 mb-3">
+                                <img class="img-fluid" src="./assets/svg/icons/icon-26.svg" alt="SVG">
+                            </figure>
+                            <h4>Và còn nhiều hơn nữa...</h4>
+                            <p>VinaC2C bao gồm một hệ thống quản lí bán hàng chuyên nghiệp dành cho bạn.</p>
+                        </div>
+                        <!-- End Icon Blocks -->
+                    </div>
+                </div>
+
+                <!-- SVG Shapes -->
+                <figure class="position-absolute z-index-n1" style="top: -35rem; left: 50rem; width: 62rem; height: 62rem;">
+                    <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 260 260">
+                        <circle fill="#e7eaf3" opacity=".7" cx="130" cy="130" r="130" />
+                    </svg>
+                </figure>
+                <!-- End SVG Shapes -->
+            </div>
+        </div>
+        <!-- End Icon Blocks Section -->
+        <!-- Pricing Section -->
+        <div class="overflow-hidden">
+            <div class="container pb-4">
+                <!-- Title -->
+                <div class="w-md-80 w-lg-60 text-center mx-md-auto mb-9">
+                    <h2 class="h1">Bảng giá các gói dịch vụ VinaC2C</h2>
+                    <p>Mọi thứ bạn cần để có thể quản lí liên tục tất cả các Shop của bạn ở một nơi duy nhất.</p>
+                </div>
+                <!-- End Title -->
+                <!-- Toggle Switch -->
+                <div class="d-flex justify-content-center align-items-center mb-11">
+                    <span class="font-size-1 text-muted">Gói tháng</span>
+                    <label class="toggle-switch mx-2" for="customSwitch">
+                        <input type="checkbox" class="js-toggle-switch toggle-switch-input" id="customSwitch"
+                               data-hs-toggle-switch-options='{
+                     "targetSelector": "#pricingCount1, #pricingCount2, #pricingCount3"
+                   }'>
+                        <span class="toggle-switch-label">
+                            <span class="toggle-switch-indicator"></span>
+                        </span>
+                    </label>
+                    <div class="position-relative">
+                        <span class="font-size-1 text-muted">Gói năm</span>
+
+                        <!-- Arrow -->
+                        <figure class="position-absolute top-0 text-nowrap mt-n5 ml-3 ml-md-7">
+                            <svg class="d-block position-absolute mt-n2 ml-n4" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 99.3 57" width="48">
+                                <path fill="none" stroke="#bdc5d1" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" d="M2,39.5l7.7,14.8c0.4,0.7,1.3,0.9,2,0.4L27.9,42" />
+                                <path fill="none" stroke="#bdc5d1" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" d="M11,54.3c0,0,10.3-65.2,86.3-50" />
+                            </svg>
+                            <span class="badge badge-primary badge-pill py-sm-2 px-sm-3">Tiết kiệm đến 10%</span>
+                        </figure>
+                        <!-- End Arrow -->
+                    </div>
+                </div>
+                <!-- End Toggle Switch -->
+
+                <div class="row mx-lg-5">
+                    <div class="col-sm-6 col-lg-4 px-lg-5 mb-5">
+                        <!-- Pricing -->
+                        <div class="card shadow-none h-100">
+                            <!-- Header -->
+                            <div class="card-header border-0 text-center">
+                                <span class="d-block h3 mb-0">Gói tiêu chuẩn</span>
+                                <span class="d-block">
+                                    <span class="font-size-4 text-primary font-weight-bold">
+                                        <span id="pricingCount1"
+                                              data-hs-toggle-switch-item-options='{
+                             "min": 0,
+                             "max": 0
+                           }'>0</span>
+                                        <span class="mr-n2">đ</span>
+                                    </span>
+                                    <span class="font-size-1">/ tháng</span>
+                                </span>
+                            </div>
+                            <!-- End Header -->
+                            <!-- Body -->
+                            <div class="card-body">
+                                <div class="media font-size-1 text-body mb-3">
+                                    <i class="fas fa-check-circle text-success mt-1 mr-2"></i>
+                                    <div class="media-body">
+                                        Quản lý nhiều shop trên Shopee
+                                    </div>
+                                </div>
+                                <div class="media font-size-1 text-body mb-3">
+                                    <i class="fas fa-check-circle text-success mt-1 mr-2"></i>
+                                    <div class="media-body">
+                                        Sử dụng tất cả các tính năng
+                                    </div>
+                                </div>
+                                <div class="media font-size-1 text-body mb-3">
+                                    <i class="fas fa-check-circle text-success mt-1 mr-2"></i>
+                                    <div class="media-body">
+                                        Hỗ trợ trực tuyến
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Body -->
+
+                            <div class="card-footer border-0">
+                                <button type="button" class="btn btn-soft-primary btn-block transition-3d-hover">Đăng kí</button>
+                            </div>
+                        </div>
+                        <!-- End Pricing -->
+                    </div>
+
+                    <div class="col-sm-6 col-lg-4 px-lg-5 mb-5">
+                        <!-- Pricing -->
+                        <div class="position-relative">
+                            <div class="card shadow-lg h-100">
+                                <!-- Header -->
+                                <div class="card-header border-0 text-center">
+                                    <span class="d-block h3 mb-0">Gói Pro</span>
+                                    <span class="d-block">
+                                        <span class="font-size-4 text-primary font-weight-bold">
+                                            <span id="pricingCount2"
+                                                  data-hs-toggle-switch-item-options='{
+                               "min": 69000,
+                               "max": 62000
+                             }'>69,000</span>
+                                            <span class="mr-n2">đ</span>
+                                        </span>
+                                        <span class="font-size-1">/ tháng</span>
+                                    </span>
+                                </div>
+                                <!-- End Header -->
+                                <!-- Body -->
+                                <div class="card-body">
+                                    <div class="media font-size-1 mb-3">
+                                        <i class="fas fa-check-circle text-success mt-1 mr-2"></i>
+                                        <div class="media-body">
+                                            Quản lý nhiều shop trên Shopee
+                                        </div>
+                                    </div>
+                                    <div class="media font-size-1 mb-3">
+                                        <i class="fas fa-check-circle text-success mt-1 mr-2"></i>
+                                        <div class="media-body">
+                                            Quản lý thêm nhiều shop trên 1 sàn TMĐT khác tự chọn
+                                        </div>
+                                    </div>
+                                    <div class="media font-size-1 mb-3">
+                                        <i class="fas fa-check-circle text-success mt-1 mr-2"></i>
+                                        <div class="media-body">
+                                            Sử dụng tất cả các tính năng
+                                        </div>
+                                    </div>
+                                    <div class="media font-size-1 mb-3">
+                                        <i class="fas fa-check-circle text-success mt-1 mr-2"></i>
+                                        <div class="media-body">
+                                            Hỗ trợ trực tuyến
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Body -->
+
+                                <div class="card-footer border-0">
+                                    <button type="button" class="btn btn-soft-primary btn-block transition-3d-hover">Đăng kí</button>
+                                </div>
+                            </div>
+
+                            <!-- SVG Elements -->
+                            <figure class="max-w-19rem w-100 position-absolute bottom-0 left-0 z-index-n1">
+                                <div class="mb-n7 ml-n7">
+                                    <img class="img-fluid" src="./assets/svg/components/dots-2.svg" alt="Image Description">
+                                </div>
+                            </figure>
+                            <figure class="max-w-15rem w-100 position-absolute top-0 right-0 z-index-n1">
+                                <div class="mt-n7 mr-n7">
+                                    <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                         viewBox="0 0 260 260" xml:space="preserve">
+                                    <circle fill="#ffc107" cx="130" cy="130" r="130" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  </svg>
+                                </div>
+                            </figure>
+                            <!-- End SVG Elements -->
+                        </div>
+                        <!-- End Pricing -->
+                    </div>
+
+                    <div class="col-sm-6 col-lg-4 px-lg-5 mb-5">
+                        <!-- Pricing -->
+                        <div class="card shadow-none h-100">
+                            <!-- Header -->
+                            <div class="card-header border-0 text-center">
+                                <span class="d-block h3 mb-0">VIP</span>
+                                <span class="d-block">
+                                    <span class="font-size-4 text-primary font-weight-bold">
+                                        <span id="pricingCount3"
+                                              data-hs-toggle-switch-item-options='{
+                             "min": 89000,
+                             "max": 79000
+                           }'>89,000</span>
+                                        <span class="mr-n2">đ</span>
+                                    </span>
+                                    <span class="font-size-1">/ tháng</span>
+                                </span>
+                            </div>
+                            <!-- End Header -->
+                            <!-- Body -->
+                            <div class="card-body">
+                                <div class="media font-size-1 text-body mb-3">
+                                    <i class="fas fa-check-circle text-success mt-1 mr-2"></i>
+                                    <div class="media-body">
+                                        Quản lý nhiều shop trên tất cả các sàn TMĐT
+                                    </div>
+                                </div>
+                                <div class="media font-size-1 text-body mb-3">
+                                    <i class="fas fa-check-circle text-success mt-1 mr-2"></i>
+                                    <div class="media-body">
+                                        Sử dụng tất cả tính năng của VinaC2C
+                                    </div>
+                                </div>
+                                <div class="media font-size-1 text-body mb-3">
+                                    <i class="fas fa-check-circle text-success mt-1 mr-2"></i>
+                                    <div class="media-body">
+                                        Hỗ trợ trực tuyến dành cho khách hàng VIP
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Body -->
+
+                            <div class="card-footer border-0">
+                                <button type="button" class="btn btn-soft-primary btn-block transition-3d-hover">Đăng kí</button>
+                            </div>
+                        </div>
+                        <!-- End Pricing -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Pricing Section -->
+        <!-- Features Section -->
+        <div class="container space-2 space-lg-3">
+            <div class="row justify-content-lg-between">
+                <div class="col-lg-5 order-lg-2 pl-lg-0">
+                    <div class="bg-img-hero h-100 min-h-450rem rounded" style="background-image: url(./assets/img/900x900/img19.jpg);"></div>
+                </div>
+
+                <div class="col-lg-6 order-lg-1">
+                    <div class="pt-8 pb-lg-8">
+                        <!-- Title -->
+                        <div class="mb-5 mb-md-7">
+                            <h2 class="mb-3">Công cụ mạnh mẽ và linh hoạt cho tất cả các Shop TMĐT</h2>
+                            <p>Cho dù bạn đang bán hàng trên các sàn Thương mại điện tử như Shopee, Lazada, Sendo hay Tiki..., chức năng chưa từng có của VinaC2C giúp bạn quản lý sản phẩm tốt nhất có thể trên các Shop của mình.</p>
+                        </div>
+                        <!-- End Title -->
+
+                        <div class="row">
+                            <div class="col-6 mb-3 mb-md-5">
+                                <div class="pr-lg-4">
+                                    <span class="js-counter h2 text-primary">500</span>
+                                    <span class="h2 text-primary">+</span>
+                                    <p>Người sử dụng công cụ của chúng tôi.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-6 mb-3 mb-md-5">
+                                <div class="pr-lg-4">
+                                    <span class="js-counter h2 text-primary">300</span>
+                                    <span class="h2 text-primary">+</span>
+                                    <p>Khách hàng hài lòng và muốn tiếp tục sử dụng.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="pr-lg-4">
+                                    <span class="js-counter h2 text-primary">95</span>
+                                    <span class="h2 text-primary">%</span>
+                                    <p>trong số các khách hàng của chúng tôi đánh giá 5 sao cho VinaC2C.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="pr-lg-4">
+                                    <span class="js-counter h2 text-primary">23</span>
+                                    <span class="h2 text-primary">+</span>
+                                    <p>Chúng tôi liên tục triển khai các cải tiến cho VinaC2C, nơi xử lý hơn 23 người dùng mới mỗi ngày.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Features Section -->
+        <!-- Testimonials Section -->
+        <div class="bg-light rounded mx-3 mx-md-11">
+            <div class="container space-1 space-md-2">
+                <div class="card bg-transparent shadow-none">
+                    <div class="row">
+                        <div class="col-lg-3 d-none d-lg-block">
+                            <div class="dzsparallaxer auto-init height-is-based-on-content use-loading mode-scroll bg-light" data-options='{direction: "reverse"}' style="overflow: visible;">
+                                <div data-parallaxanimation='[{property: "transform", value:" translate3d(0,{{val}}rem,0)", initial:"4", mid:"0", final:"-4"}]'>
+                                    <img class="img-fluid rounded shadow-lg" src="./assets/img/400x500/img31.jpg" alt="Image Description">
+
+                                    <!-- SVG Shapes -->
+                                    <figure class="max-w-15rem w-100 position-absolute bottom-0 left-0 z-index-n1">
+                                        <div class="mb-n7 ml-n7">
+                                            <img class="img-fluid" src="./assets/svg/components/dots-5.svg" alt="Image Description">
+                                        </div>
+                                    </figure>
+                                    <!-- End SVG Shapes -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-9">
+                            <!-- Card Body -->
+                            <div class="card-body h-100 rounded p-0 p-md-4">
+                                <!-- SVG Quote -->
+                                <figure class="mb-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="36" height="36" viewBox="0 0 8 8">
+                                        <path fill="#377dff" d="M3,1.3C2,1.7,1.2,2.7,1.2,3.6c0,0.2,0,0.4,0.1,0.5c0.2-0.2,0.5-0.3,0.9-0.3c0.8,0,1.5,0.6,1.5,1.5c0,0.9-0.7,1.5-1.5,1.5
+                      C1.4,6.9,1,6.6,0.7,6.1C0.4,5.6,0.3,4.9,0.3,4.5c0-1.6,0.8-2.9,2.5-3.7L3,1.3z M7.1,1.3c-1,0.4-1.8,1.4-1.8,2.3
+                      c0,0.2,0,0.4,0.1,0.5c0.2-0.2,0.5-0.3,0.9-0.3c0.8,0,1.5,0.6,1.5,1.5c0,0.9-0.7,1.5-1.5,1.5c-0.7,0-1.1-0.3-1.4-0.8
+                      C4.4,5.6,4.4,4.9,4.4,4.5c0-1.6,0.8-2.9,2.5-3.7L7.1,1.3z" />
+                                    </svg>
+                                </figure>
+                                <!-- End SVG Quote -->
+
+                                <div class="row">
+                                    <div class="col-lg-8 mb-3 mb-lg-0">
+                                        <div class="pr-lg-5">
+                                            <blockquote class="h3 font-weight-normal mb-4">Nhờ có ứng dụng quản lý shop các sàn Thương Mại Điện Tử của VinaC2C, giờ đây công việc bán hàng của tôi không còn quá khó khăn. Việc quản lý Shop chỉ còn ở một nơi duy nhất. Và VinaC2C cũng quá rẻ so với các website khác.</blockquote>
+                                            <div class="media">
+                                                <div class="avatar avatar-xs avatar-circle d-lg-none mr-2">
+                                                    <img class="avatar-img" src="./assets/img/100x100/img19.jpg" alt="Image Description">
+                                                </div>
+                                                <div class="media-body">
+                                                    <span class="text-dark font-weight-bold">Lê Hoàng Nam</span>
+                                                    <span class="font-size-1">&mdash; khách hàng hài lòng</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 column-divider-lg">
+                                        <hr class="d-lg-none">
+
+                                        <div class="pl-lg-5">
+                                            <span class="h1 text-primary">500+</span>
+                                            <p class="font-size-1">Người dùng đã tin tưởng và sử dụng VinaC2C làm công cụ quản lý shop bán hàng TMĐT.</p>
+                                            <!--<a class="font-size-1 text-nowrap" href="#">Read the case studies <i class="fas fa-angle-right fa-sm ml-1"></i></a>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Card Body -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Testimonials Section -->
+
+        <div class="cbp"
+             data-hs-cbp-options='{
+		   "defaultFilter": ".landings",
+		   "animationType": "fadeOut",
+		   "caption": "zoom",
+		   "gapHorizontal": 0,
+		   "gapVertical": 0,
+		   "mediaQueries": [
+			 {"width": 1500, "cols": 3},
+			 {"width": 1100, "cols": 3},
+			 {"width": 800, "cols": 3},
+			 {"width": 480, "cols": 2},
+			 {"width": 380, "cols": 1}
+		   ]
+		 }'>
+        </div>
+        <!-- Stats Section -->
+        <div class="container space-top-1 space-top-md-2 space-bottom-2 space-bottom-lg-3">
+            <div class="row justify-content-lg-center">
+                <div class="col-md-4 mb-7 mb-lg-0">
+                    <div data-aos="fade-up" data-aos-delay="100">
+                        <!-- Stats -->
+                        <div class="text-center px-md-3 px-lg-7">
+                            <figure class="mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 71.7 64" width="71" height="64">
+                                    <path fill="#FFC107" d="M36.8,14.6L42,25.3c0,0.2,0.2,0.2,0.3,0.3L54,27.2c0.3,0,0.5,0.5,0.3,0.8l-8.5,8.2c-0.2,0.2-0.2,0.3-0.2,0.5
+                    l2,11.7c0,0.3-0.3,0.7-0.7,0.5l-10.5-5.6c-0.2,0-0.3,0-0.5,0l-10.5,5.6c-0.3,0.2-0.8-0.2-0.7-0.5l2-11.7c0-0.2,0-0.3-0.2-0.5
+                    L18,28.1c-0.3-0.3-0.2-0.8,0.3-0.8L30,25.6c0.2,0,0.3-0.2,0.3-0.3l5.3-10.7C36.1,14.2,36.6,14.2,36.8,14.6z" />
+                                    <path opacity=".25" fill="#FFC107" d="M56,5.9l1.5,2.8c0,0,0,0,0.2,0l3.1,0.5c0.2,0,0.2,0.2,0,0.2l-2.3,2.3c0,0,0,0,0,0.2l0.5,3.1
+                    c0,0.2-0.2,0.2-0.2,0.2L56,13.6h-0.2L53,15.1c-0.2,0-0.2,0-0.2-0.2l0.5-3.1v-0.2l-2.3-2.3V9.2l3.1-0.5c0,0,0,0,0.2,0l1.5-2.8
+                    C55.8,5.7,55.8,5.7,56,5.9z" />
+                                    <path opacity=".25" fill="#FFC107" d="M12.3,0.3l1.3,2.8c0,0,0,0,0.2,0l3,0.5c0.2,0,0.2,0.2,0,0.2l-2.1,2.1c0,0,0,0,0,0.2l0.5,3
+                    c0,0.2-0.2,0.2-0.2,0.2l-2.6-1.5c0,0,0,0-0.2,0L9.5,9.2c-0.2,0-0.2,0-0.2-0.2l0.5-3c0,0,0,0,0-0.2L7.5,3.7V3.6l3-0.5c0,0,0,0,0.2,0
+                    l1.3-2.8C12.1,0.3,12.3,0.3,12.3,0.3z" />
+                                    <path opacity=".25" fill="#FFC107" d="M13.9,49.9l1.5,2.8c0,0,0,0,0.2,0l3.1,0.5c0.2,0,0.2,0.2,0,0.2l-2.3,2.3c0,0,0,0,0,0.2l0.5,3.1
+                    c0,0.2-0.2,0.2-0.2,0.2l-2.8-1.5h-0.2L11,59.1c-0.2,0-0.2,0-0.2-0.2l0.5-3.1v-0.2L9,53.4v-0.2l3.1-0.5c0,0,0,0,0.2,0l1.3-2.8
+                    C13.8,49.8,13.9,49.8,13.9,49.9z" />
+                                    <path opacity=".25" fill="#FFC107" d="M60.8,53.5l1.6,3.1c0,0,0,0,0.2,0l3.5,0.5c0.2,0,0.2,0.2,0,0.3l-2.5,2.5c0,0,0,0,0,0.2l0.7,3.5
+                    c0,0.2-0.2,0.2-0.2,0.2l-3.1-1.6h-0.2l-3.1,1.6c-0.2,0-0.2,0-0.2-0.2l0.7-3.5v-0.2l-2.5-2.5c-0.2-0.2,0-0.2,0-0.3l3.5-0.5h0.2
+                    l1.6-3.1C60.4,53.4,60.6,53.4,60.8,53.5z" />
+                                </svg>
+                            </figure>
+                            <p class="mb-0"><span class="text-dark font-weight-bold">4.84 trên 5 sao</span> từ 49 khách hàng review</p>
+                        </div>
+                        <!-- End Stats -->
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-7 mb-lg-0">
+                    <div data-aos="fade-up">
+                        <!-- Stats -->
+                        <div class="text-center column-divider-md column-divider-20deg px-md-3 px-lg-7">
+                            <figure class="mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 71.7 64" width="71" height="64">
+                                    <defs>
+                                        <circle id="SVGID_1_" cx="50.9" cy="43.1" r="18.9" />
+                                    </defs>
+                                    <clipPath id="SVGID_2_">
+                                        <use xlink:href="#SVGID_1_" />
+                                    </clipPath>
+                                    <g transform="matrix(1 0 0 1 0 1.907349e-06)" style="clip-path:url(#SVGID_2_);">
+                                        <image width="100" height="100" xlink:href="./assets/img/100x100/img19.jpg" transform="matrix(0.36 0 0 0.36 32.8571 25.1429)"></image>
+                                    </g>
+                                    <use xlink:href="#SVGID_1_" fill="none" stroke="#FFFFFF" stroke-width="4" />
+                                    <defs>
+                                        <circle id="SVGID_3_" cx="34.6" cy="20.9" r="18.9" />
+                                    </defs>
+                                    <clipPath id="SVGID_4_">
+                                        <use xlink:href="#SVGID_3_" />
+                                    </clipPath>
+                                    <g style="clip-path:url(#SVGID_4_);">
+                                        <image width="100" height="100" xlink:href="./assets/img/100x100/img10.jpg" transform="matrix(0.36 0 0 0.36 16.5714 2.8571)"></image>
+                                    </g>
+                                    <use xlink:href="#SVGID_3_" fill="none" stroke="#FFFFFF" stroke-width="4" />
+                                    <defs>
+                                        <circle id="SVGID_5_" cx="20.9" cy="43.1" r="18.9" />
+                                    </defs>
+                                    <clipPath id="SVGID_6_">
+                                        <use xlink:href="#SVGID_5_" />
+                                    </clipPath>
+                                    <g style="clip-path:url(#SVGID_6_);">
+                                        <image width="100" height="100" xlink:href="./assets/img/100x100/img11.jpg" transform="matrix(0.3771 0 0 0.3771 2 24.2857)"></image>
+                                    </g>
+                                    <use xlink:href="#SVGID_5_" fill="none" stroke="#FFFFFF" stroke-width="4" />
+                                </svg>
+                            </figure>
+                            <p class=" mb-0">Hơn <span class="text-dark font-weight-bold">500</span> câu hỏi hỗ trợ đã được trả lời</p>
+                        </div>
+                        <!-- End Stats -->
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div data-aos="fade-up" data-aos-delay="100">
+                        <!-- Stats -->
+                        <div class="text-center column-divider-md column-divider-20deg px-md-3 px-lg-7">
+                            <figure class="mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="71" height="64" viewBox="0 0 71.7 64">
+                                    <path fill="none" stroke="#21325b" stroke-width="2" d="M47.9,1.3H20.1c-2,0-3.5,1.5-3.5,3.5v51.4c0,2,1.5,3.5,3.5,3.5h36.5c2,0,3.5-1.5,3.5-3.5v-8.6V21.2v-7.5
+                    L47.9,1.3z" />
+                                    <path fill="#21325b" d="M49.1,14.7c-1.1,0-1.8-0.9-1.8-1.8V2L60,14.7H49.1z" />
+                                    <line fill="none" stroke="#21325b" stroke-width="2" stroke-linecap="round" x1="48.2" y1="21" x2="28" y2="21" />
+                                    <line fill="none" stroke="#21325b" stroke-width="2" stroke-linecap="round" x1="48.2" y1="27.9" x2="28" y2="27.9" />
+                                    <line fill="none" stroke="#21325b" stroke-width="2" stroke-linecap="round" x1="48.2" y1="34.8" x2="28" y2="34.8" />
+                                    <line fill="none" stroke="#21325b" stroke-width="2" stroke-linecap="round" x1="48.2" y1="42" x2="28" y2="42" />
+                                    <path opacity=".2" fill="#21325b" d="M17.1,56V10.2c0-1.4-1.1-2.5-2.5-2.5h-0.5c-1.4,0-2.5,1.1-2.5,2.5v51.1c0,1.4,1.1,2.5,2.5,2.5h2.9h34.7
+                    c1.4,0,2.5-1.1,2.5-2.5v-0.5c0-1.4-1.1-2.5-2.5-2.5H19.5C18.1,58.4,17.1,57.4,17.1,56z" />
+                                </svg>
+                            </figure>
+                            <p class="mb-0">Trên <span class="text-dark font-weight-bold">300</span> người dùng đã sử dụng VinaC2C phiên bản PRO trở lên</p>
+                        </div>
+                        <!-- End Stats -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Stats Section -->
+    </main>
+    <!-- ========== END MAIN CONTENT ========== -->
+    <!-- ========== FOOTER ========== -->
+    <footer class="bg-navy">
+        <div class="container">
+            <div class="space-top-2 space-bottom-1 space-bottom-lg-2">
+                <div class="row justify-content-lg-between">
+                    <div class="col-lg-3 ml-lg-auto mb-5 mb-lg-0">
+                        <!-- Logo -->
+                        <div class="mb-4">
+                            <a href="index.html" aria-label="Front">
+                                <img class="brand" src="./assets/img/others/logo_white.png" alt="Logo">
+                            </a>
+                        </div>
+                        <!-- End Logo -->
+                        <!-- Nav Link -->
+                        <ul class="nav nav-sm nav-x-0 nav-white flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link media" href="tel:+84 523697920">
+                                    <span class="media">
+                                        <span class="fas fa-phone-alt mt-1 mr-2"></span>
+                                        <span class="media-body">
+                                            +84 523697920
+                                        </span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link media" href="javascript:;">
+                                    <span class="media">
+                                        <span class="fas fa-envelope mt-1 mr-2"></span>
+                                        <span class="media-body">
+                                            contact@vinac2c.com
+                                        </span>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- End Nav Link -->
+                    </div>
+
+                    <div class="col-6 col-md-3 col-lg mb-5 mb-lg-0">
+                        <h5 class="text-white">Thông tin</h5>
+
+                        <!-- Nav Link -->
+                        <ul class="nav nav-sm nav-x-0 nav-white flex-column">
+                            <li class="nav-item"><a class="nav-link" href="#">Về chúng tôi</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+                        </ul>
+                        <!-- End Nav Link -->
+                    </div>
+
+                    <div class="col-6 col-md-3 col-lg mb-5 mb-lg-0">
+                        <h5 class="text-white">Đặc điểm</h5>
+
+                        <!-- Nav Link -->
+                        <ul class="nav nav-sm nav-x-0 nav-white flex-column">
+                            <li class="nav-item"><a class="nav-link" href="#">Phiên bản phát hành</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Bảng giá dịch vụ</a></li>
+                        </ul>
+                        <!-- End Nav Link -->
+                    </div>
+
+                    <div class="col-6 col-md-3 col-lg">
+                        <h5 class="text-white">Tài liệu</h5>
+
+                        <!-- Nav Link -->
+                        <ul class="nav nav-sm nav-x-0 nav-white flex-column">
+                            <li class="nav-item"><a class="nav-link" href="#">Hỗ trợ</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Tài liệu</a></li>
+                        </ul>
+                        <!-- End Nav Link -->
+                    </div>
+
+                    <div class="col-6 col-md-3 col-lg">
+                        <h5 class="text-white">Tài khoản</h5>
+                        <ul class="nav nav-sm nav-x-0 nav-white flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" asp-action="Index" asp-controller="User">
+                                    <span class="media align-items-center">
+                                        <span class="media-body">Đăng nhập</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <span class="media align-items-center">
+                                        <span class="media-body">Đăng kí</span>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="opacity-xs my-0">
+
+            <div class="space-1">
+                <div class="row align-items-md-center mb-7">
+                    <div class="col-md-6 mb-4 mb-md-0">
+                        <ul class="nav nav-sm nav-white nav-x-sm align-items-center">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Chính sách bảo mật</a>
+                            </li>
+                            <li class="nav-item opacity mx-3">&#47;</li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Quy định sử dụng</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 text-md-right">
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item">
+                                <a class="btn btn-xs btn-icon btn-soft-light" href="#">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="btn btn-xs btn-icon btn-soft-light" href="#">
+                                    <i class="fab fa-google"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="btn btn-xs btn-icon btn-soft-light" href="#">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="btn btn-xs btn-icon btn-soft-light" href="#">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <div class="hs-unfold">
+                                    <a class="js-hs-unfold-invoker dropdown-toggle btn btn-xs btn-soft-light" href="javascript:;"
+                                       data-hs-unfold-options='{
+                      "target": "#footerLanguage",
+                      "type": "css-animation",
+                      "animationIn": "slideInDown"
+                     }'>
+                                        <img class="dropdown-item-icon" src="./assets/img/others/vi.png" alt="Cờ Việt Nam">
+                                        <span>Tiếng Việt</span>
+                                    </a>
+
+                                    <div id="footerLanguage" class="hs-unfold-content dropdown-menu dropdown-unfold dropdown-menu-bottom mb-2">
+                                        <a class="dropdown-item active" href="#">Tiếng Việt</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="w-md-75 text-lg-center mx-lg-auto">
+                    <p class="text-white opacity-sm small">Bản Quyền &copy; 2020 VinaC2C. Bảo Lưu Toàn Bộ Bản Quyền.</p>
+                    <p class="text-white opacity-sm small">Khi bạn truy cập hoặc tương tác với các trang web, dịch vụ hoặc công cụ của chúng tôi, chúng tôi hoặc nhà cung cấp dịch vụ được ủy quyền của chúng tôi có thể sử dụng cookie để lưu trữ thông tin để giúp cung cấp cho bạn trải nghiệm tốt hơn, nhanh hơn và an toàn hơn và cho các mục đích tiếp thị.</p>
+                </div>
+            </div>
+        </div>
     </footer>
+    <a class="js-go-to go-to position-fixed" href="javascript:;" style="visibility: hidden;"
+       data-hs-go-to-options='{
+       "offsetTop": 700,
+       "position": {
+         "init": {
+           "right": 15
+         },
+         "show": {
+           "bottom": 15
+         },
+         "hide": {
+           "bottom": -15
+         }
+       }
+     }'>
+        <i class="fas fa-angle-up"></i>
+    </a>
+    <script src="~/assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="~/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js"></script>
+    <script src="~/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/vendor/hs-header/dist/hs-header.min.js"></script>
+    <script src="~/assets/vendor/hs-go-to/dist/hs-go-to.min.js"></script>
+    <script src="~/assets/vendor/hs-unfold/dist/hs-unfold.min.js"></script>
+    <script src="~/assets/vendor/hs-mega-menu/dist/hs-mega-menu.min.js"></script>
+    <script src="~/assets/vendor/hs-show-animation/dist/hs-show-animation.min.js"></script>
+    <script src="~/assets/vendor/hs-sticky-block/dist/hs-sticky-block.min.js"></script>
+    <script src="~/assets/vendor/hs-counter/dist/hs-counter.min.js"></script>
+    <script src="~/assets/vendor/appear.js"></script>
+    <script src="~/assets/vendor/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
+    <script src="~/assets/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/assets/vendor/hs-toggle-switch/dist/hs-toggle-switch.min.js"></script>
+    <script src="~/assets/vendor/dzsparallaxer/dzsparallaxer.js"></script>
+    <script src="~/assets/vendor/aos/dist/aos.js"></script>
+    <script src="~/assets/vendor/typed.js/lib/typed.min.js"></script>
+    <script src="~/assets/js/hs.core.js"></script>
+    <script src="~/assets/js/hs.validation.js"></script>
+    <script src="~/assets/js/hs.cubeportfolio.js"></script>
+    <script>
+        $(document).on('ready', function () {
+            // initialization of header
+            var header = new HSHeader($('#header')).init();
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/js/jquery-ui.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!--Plugin-JS-->
-    <script src="~/js/owl.carousel.min.js"></script>
-    <script src="~/js/contact-form.js"></script>
-    <script src="~/js/ajaxchimp.js"></script>
-    <script src="~/js/scrollUp.min.js"></script>
-    <script src="~/js/magnific-popup.min.js"></script>
-    <script src="~/js/wow.min.js"></script>
-    <!--Main-active-JS-->
-    <script src="~/js/home.js"></script>
+            // initialization of mega menu
+            var megaMenu = new HSMegaMenu($('.js-mega-menu'), {
+                desktop: {
+                    position: 'left'
+                }
+            }).init();
+
+            // initialization of form validation
+            $('.js-validate').each(function () {
+                $.HSCore.components.HSValidation.init($(this), {
+                    rules: {
+                        confirmPassword: {
+                            equalTo: '#signupPassword'
+                        }
+                    }
+                });
+            });
+
+            // initialization of show animations
+            $('.js-animation-link').each(function () {
+                var showAnimation = new HSShowAnimation($(this)).init();
+            });
+
+            // initialization of counter
+            $('.js-counter').each(function () {
+                var counter = new HSCounter($(this)).init();
+            });
+
+            // initialization of sticky block
+            var cbpStickyFilter = new HSStickyBlock($('#cbpStickyFilter'));
+
+            // initialization of cubeportfolio
+            $('.cbp').each(function () {
+                var cbp = $.HSCore.components.HSCubeportfolio.init($(this), {
+                    layoutMode: 'grid',
+                    filters: '#filterControls',
+                    displayTypeSpeed: 0
+                });
+            });
+
+            $('.cbp').on('initComplete.cbp', function () {
+                // update sticky block
+                cbpStickyFilter.update();
+
+                // initialization of aos
+                AOS.init({
+                    duration: 650,
+                    once: true
+                });
+            });
+
+            // initialization of text animation (typing)
+            var typed = new Typed(".js-text-animation", {
+                strings: ["Shopee...", "Lazada...", "Sendo...", "Tiki..."],
+                typeSpeed: 60,
+                loop: true,
+                backSpeed: 25,
+                backDelay: 1500
+            });
+
+            $('.cbp').on('filterComplete.cbp', function () {
+                // update sticky block
+                cbpStickyFilter.update();
+
+                // initialization of aos
+                AOS.init({
+                    duration: 650,
+                    once: true
+                });
+            });
+
+            $('.cbp').on('pluginResize.cbp', function () {
+                // update sticky block
+                cbpStickyFilter.update();
+            });
+
+            // initialization of toggle switch
+            $('.js-toggle-switch').each(function () {
+                var toggleSwitch = new HSToggleSwitch($(this)).init();
+            });
+
+            // animated scroll to cbp container
+            $('#cbpStickyFilter').on('click', '.cbp-filter-item', function (e) {
+                $('html, body').stop().animate({
+                    scrollTop: $('#demoExamplesSection').offset().top
+                }, 200);
+            });
+
+            // initialization of go to
+            $('.js-go-to').each(function () {
+                var goTo = new HSGoTo($(this)).init();
+            });
+        });
+    </script>
+    <script>
+        if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) document.write('<script src="~/assets/vendor/polifills.js"><\/script>');
+    </script>
 </body>
-
-
 </html>

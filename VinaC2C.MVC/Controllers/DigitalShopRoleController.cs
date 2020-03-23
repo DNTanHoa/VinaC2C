@@ -82,7 +82,7 @@ namespace VinaC2C.MVC.Controllers
             return Json(digitalShopRoleService.GetDigitalShopByUsername(username));
         }
 
-        public JsonResult InitializeUserFeatureRole()
+        public JsonResult InitializeUserDigitalShopRole()
         {
             return Json(digitalShopRoleService.InitializeUserDigitalShopRole());
         }

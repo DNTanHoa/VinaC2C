@@ -11,10 +11,10 @@ namespace VinaC2C.Data.Services.Feature.Interface
     {
         public List<UserFeatureRole> GetFeatureByUsername(string username);
 
-        public List<UserFeatureRole> InitializeUserFeatureRole();
+        public List<UserFeatureRole> InitializeUserFeatureRole(Int64 UserID);
 
-        public List<UserFeatureRole> GetFeatureByUserID(int UserID);
+        public List<UserFeatureRole> GetFeatureByUserID(Int64 UserID);
 
-        public int SaveChange(List<UserFeatureRole> userFeatureRoles, bool isAllowAll = false);
+        public int SaveChange(List<Models.FeatureRole> featureRoles);
     }
 }

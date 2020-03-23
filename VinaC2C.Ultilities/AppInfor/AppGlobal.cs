@@ -158,7 +158,7 @@ namespace VinaC2C.Ultilities.AppInfor
                 return configurationRoot.GetSection("RegisterMailSubject").Value.ToString();
             }
         }
-
+        
         /// <summary>
         /// RegisterMailTemplatePath
         /// </summary>
@@ -306,6 +306,21 @@ namespace VinaC2C.Ultilities.AppInfor
                                                            .AddJsonFile("appsettings.json")
                                                            .Build();
                 return configurationRoot.GetSection("LoginPath").Value.ToString();
+            }
+        }
+
+        /// <summary>
+        /// UpdateLocalMessage
+        /// </summary>
+        public static string UpdateLocalMessage
+        {
+            get
+            {
+                IConfigurationRoot configurationRoot = new ConfigurationBuilder()
+                                                           .SetBasePath(Directory.GetCurrentDirectory())
+                                                           .AddJsonFile("appsettings.json")
+                                                           .Build();
+                return configurationRoot.GetSection("UpdateLocalMessage").Value.ToString();
             }
         }
     }

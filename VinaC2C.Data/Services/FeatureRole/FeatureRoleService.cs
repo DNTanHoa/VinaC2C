@@ -20,7 +20,7 @@ namespace VinaC2C.Data.Services.Feature
             this._context = context;
         }
 
-        public List<UserFeatureRole> GetFeatureByUserID(int UserID)
+        public List<UserFeatureRole> GetFeatureByUserID(Int64 UserID)
         {
             var featureRoles = (from FeatureRole in _context.FeatureRoles
                                 join Feature in _context.Features on FeatureRole.FeatureID equals Feature.Id
@@ -30,6 +30,7 @@ namespace VinaC2C.Data.Services.Feature
                                 {
                                     Id = FeatureRole.Id,
                                     Name = Feature.Name,
+                                    FeatureID = FeatureRole.FeatureID,
                                     IsAllow = FeatureRole.IsAllow,
                                     SortOrder = Feature.SortOrder
                                 }).ToList();
@@ -52,8 +53,11 @@ namespace VinaC2C.Data.Services.Feature
             return featureRoles;
         }
 
-        public List<UserFeatureRole> InitializeUserFeatureRole()
+        public List<UserFeatureRole> InitializeUserFeatureRole(Int64 UserID)
         {
+            _context.FeatureRoles.RemoveRange(_context.FeatureRoles.Where(item => item.UserID == UserID));
+            _context.SaveChanges();
+
             var featureRoles = (from Feature in _context.Features
                                select new UserFeatureRole
                                {
@@ -61,15 +65,17 @@ namespace VinaC2C.Data.Services.Feature
                                    Name = Feature.Name,
                                    FeatureID = Feature.Id,
                                    IsAllow = false,
+                                   UserID = UserID,
                                    SortOrder = Feature.SortOrder
                                }).ToList();
 
             return featureRoles;
         }
 
-        public int SaveChange(List<UserFeatureRole> userFeatureRoles, bool isAllowAll = false)
+        public int SaveChange(List<Models.FeatureRole> featureRoles)
         {
-            throw new NotImplementedException();
+            _context.FeatureRoles.AddRange(featureRoles);
+            return _context.SaveChanges();
         }
     }
 }

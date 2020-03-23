@@ -33,7 +33,7 @@
                             <button id="reloadButton" type="button" class="btn btn-success btn-large" style="flex-basis:20%;" onclick="onReloadGrid('listFeatureRole')">
                                 <i class="fas fa-search h5 m-0 p-0"></i>
                             </button>
-                            <button id="initButton" type="button" class="btn btn-primary btn-large" style="flex-basis:20%;" onclick="onInitFeatureRole()">
+                            <button id="initButton" type="button" class="btn btn-primary btn-large" style="flex-basis:20%;" onclick="onInitDigitalShopRole()">
                                 <i class="fas fa-file-upload h5 m-0 p-0"></i>
                             </button>
                             <div style="flex-basis:35%;">
@@ -153,10 +153,10 @@
         });
     }
 
-    function onInitFeatureRole() {
+    function onInitDigitalShopRole() {
         $.ajax({
             type: 'GET',
-            url: '@Url.Action("InitializeUserFeatureRole","FeatureRole")',
+            url: '@Url.Action("InitializeUserDigitalShopRole","DigitalShopRole")',
             success: (respone) => {
                 featureRoles = respone;
                 console.log(featureRoles);

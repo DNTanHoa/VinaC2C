@@ -57,9 +57,9 @@ namespace VinaC2C.MVC.Controllers
             return Json(await featureRoleService.GetAllToListAsync());
         }
 
-        public JsonResult Create(FeatureRole featureRole)
+        public JsonResult Create(FeatureRole featureRole, Int64 UserID)
         {
-            featureRole.Initialization(ObjectInitType.Insert, "");
+            featureRole.Initialization(ObjectInitType.Insert, "",HttpContext);
             int result = featureRoleService.Create(featureRole);
             _hubContext.Clients.All.SendAsync("dataChangeNotification", null);
             if (result != 0)
@@ -70,13 +70,17 @@ namespace VinaC2C.MVC.Controllers
 
         public JsonResult Update(FeatureRole featureRole)
         {
-            featureRole.Initialization(ObjectInitType.Update, "");
-            int result = featureRoleService.Update(featureRole.Id, featureRole);
-            _hubContext.Clients.All.SendAsync("dataChangeNotification", null);
-            if (result != 0)
-                return Json(new { messageType = "success", note = AppGlobal.UpdateSuccessMessage });
-            else
-                return Json(new { messageType = "error", note = AppGlobal.UpdateFailMessage });
+            if(featureRole.Id != 0)
+            {
+                featureRole.Initialization(ObjectInitType.Update, "", HttpContext);
+                int result = featureRoleService.Update(featureRole.Id, featureRole);
+                _hubContext.Clients.All.SendAsync("dataChangeNotification", null);
+                if (result != 0)
+                    return Json(new { messageType = "success", note = AppGlobal.UpdateSuccessMessage });
+                else
+                    return Json(new { messageType = "error", note = AppGlobal.UpdateFailMessage });
+            }
+            return Json(new { messageType = "infor", note = AppGlobal.UpdateLocalMessage });
         }
 
         public JsonResult Delete(FeatureRole featureRole)
@@ -99,9 +103,30 @@ namespace VinaC2C.MVC.Controllers
             return Json(featureRoleService.GetFeatureByUsername(username));
         }
 
-        public JsonResult InitializeUserFeatureRole()
+        public JsonResult InitializeUserFeatureRole(Int64 UserID)
         {
-            return Json(featureRoleService.InitializeUserFeatureRole());
+            return Json(featureRoleService.InitializeUserFeatureRole(UserID));
+        }
+
+        [AllowAnonymous]
+        public JsonResult SaveChange(List<UserFeatureRole> userFeatureRoles = null, bool isAllowAll = false)
+        {
+            var featureRoles = userFeatureRoles.Select(item =>
+            {
+                var newFeatureRole = new Data.Models.FeatureRole
+                {
+                    FeatureID = item.FeatureID,
+                    UserID = item.UserID,
+                    IsAllow = item.IsAllow ? true : isAllowAll
+                };
+                newFeatureRole.Initialization(ObjectInitType.Insert, "", HttpContext);
+                return newFeatureRole;
+            }).ToList();
+            int result = featureRoleService.SaveChange(featureRoles);
+            if (result != 0)
+                return Json(new { messageType = "success", note = AppGlobal.UpdateSuccessMessage });
+            else
+                return Json(new { messageType = "error", note = AppGlobal.UpdateFailMessage });
         }
     }
 }

@@ -1,15 +1,20 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using VinaC2C.Ultilities.AppInfor;
 using VinaC2C.Ultilities.Enums;
+using VinaC2C.Ultilities.Helpers;
 
 namespace VinaC2C.Data.Models
 {
     public class ObjectBaseModel : BaseModel
     {
-        public void Initialization(ObjectInitType initType, string requestUser)
+        public void Initialization(ObjectInitType initType, string requestUser, HttpContext context = null)
         {
+            if (string.IsNullOrEmpty(requestUser) && context != null)
+                requestUser = CookieHelper.GetValueByKeyFromClaim(nameof(Models.User.Username), context);
+
             if (initType == ObjectInitType.Insert)
             {
                 this.CreateDate = AppGlobal.SystemDateTime;

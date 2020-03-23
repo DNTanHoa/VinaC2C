@@ -38,7 +38,7 @@
                             </button>
                             <div style="flex-basis:35%;">
                                 <div class="icheck-primary">
-                                    <input type="checkbox" id="checkboxPrimary3">
+                                    <input type="checkbox" id="checkboxPrimary3" class="isAllowAll">
                                     <label for="checkboxPrimary3">
                                         Tất Cả
                                     </label>
@@ -120,7 +120,10 @@
                     $.ajax({
                         type: "POST",
                         url: '@Url.Action("Create","FeatureRole")',
-                        data: item
+                        data: {
+                            featureRole: item,
+                            UserID: $("#UserID").children("option:selected").val()
+                        },
                     }).done(function (respone) {
                         console.log(respone);
                         $.notify(respone.note, respone.messageType);
@@ -161,6 +164,9 @@
         $.ajax({
             type: 'GET',
             url: '@Url.Action("InitializeUserFeatureRole","FeatureRole")',
+            data: {
+                 UserID: $("#UserID").children("option:selected").val()
+            },
             success: (respone) => {
                 featureRoles = respone;
                 console.log(featureRoles);
@@ -185,6 +191,20 @@
     }
 
     function onSaveChange() {
-
+        console.log(document.getElementById('checkboxPrimary3').checked);
+        $.ajax({
+            type: 'POST',
+            datatype: "JSON",
+            url: '@Url.Action("SaveChange","FeatureRole")',
+            data: {
+                userFeatureRoles: featureRoles,
+                isAllowAll: document.getElementById('checkboxPrimary3').checked,
+            },
+            success: (respone) => {
+                featureRoles = respone;
+                console.log(featureRoles);
+                renderGrid();
+            }
+        });
     }
 </script>

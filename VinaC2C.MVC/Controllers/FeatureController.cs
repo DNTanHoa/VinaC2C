@@ -48,7 +48,7 @@ namespace VinaC2C.MVC.Controllers
 
         public JsonResult Create(Feature feature)
         {
-            feature.Initialization(ObjectInitType.Insert, "");
+            feature.Initialization(ObjectInitType.Insert, "", HttpContext);
             int result = featureService.Create(feature);
             _hubContext.Clients.All.SendAsync("dataChangeNotification", null);
             if (result != 0)
@@ -59,7 +59,7 @@ namespace VinaC2C.MVC.Controllers
 
         public JsonResult Update(Feature feature)
         {
-            feature.Initialization(ObjectInitType.Update, "");
+            feature.Initialization(ObjectInitType.Update, "", HttpContext);
             int result = featureService.Update(feature.Id, feature);
             _hubContext.Clients.All.SendAsync("dataChangeNotification", null);
             if (result != 0)
