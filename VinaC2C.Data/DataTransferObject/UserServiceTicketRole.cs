@@ -16,6 +16,6 @@ namespace VinaC2C.Data.DataTransferObject
         
         public DateTime? ExpiredDate { get; set; }
 
-        public int UserID { get; set; }
+        public Int64 UserID { get; set; }
     }
 }

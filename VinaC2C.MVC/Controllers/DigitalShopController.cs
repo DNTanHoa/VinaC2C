@@ -6,8 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using VinaC2C.Data.Context;
 using VinaC2C.Data.Models;
-using VinaC2C.Data.Services.DigitalShop;
-using VinaC2C.Data.Services.Feature;
+using VinaC2C.Data.Services;
 using VinaC2C.Ultilities.AppInfor;
 using VinaC2C.Ultilities.Enums;
 
@@ -41,7 +40,7 @@ namespace VinaC2C.MVC.Controllers
 
         public JsonResult Create(DigitalShop shop)
         {
-            shop.Initialization(ObjectInitType.Insert, "");
+            shop.Initialization(ObjectInitType.Insert, "", HttpContext);
             int result = digitalShopService.Create(shop);
             if (result != 0)
                 return Json(new { messageType = "success", note = AppGlobal.InsertSuccessMessage });
@@ -51,7 +50,7 @@ namespace VinaC2C.MVC.Controllers
 
         public JsonResult Update(DigitalShop shop)
         {
-            shop.Initialization(ObjectInitType.Update, "");
+            shop.Initialization(ObjectInitType.Update, "", HttpContext);
             int result = digitalShopService.Update(shop.Id, shop);
             if (result != 0)
                 return Json(new { messageType = "success", note = AppGlobal.UpdateSuccessMessage });

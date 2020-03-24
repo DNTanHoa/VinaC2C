@@ -203,7 +203,7 @@
             success: (respone) => {
                 featureRoles = respone;
                 console.log(featureRoles);
-                renderGrid();
+                $("#searchButton").trigger('click');
             }
         });
     }

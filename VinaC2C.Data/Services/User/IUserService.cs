@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using VinaC2C.Data.DataTransferObject;
-using VinaC2C.Data.Services.Common;
 
-namespace VinaC2C.Data.Services.User
+namespace VinaC2C.Data.Services
 {
     public interface IUserService : IServiceBase<Data.Models.User>
     {

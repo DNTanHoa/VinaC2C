@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
-using VinaC2C.Data.Services.Common;
 using VinaC2C.Data.Models;
 using VinaC2C.Data.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace POSBlazor.Data.Services.Common
+namespace VinaC2C.Data.Services
 {
     public class ServiceBase<TEntity> : IServiceBase<TEntity> where TEntity : BaseModel
     {

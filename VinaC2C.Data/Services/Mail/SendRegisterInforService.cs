@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using VinaC2C.Data.Services.Mail.Interface;
 
-namespace VinaC2C.Data.Services.Mail
+namespace VinaC2C.Data.Services
 {
     public class SendRegisterInforService : SendMailService, ISendRegisterInforService
     {

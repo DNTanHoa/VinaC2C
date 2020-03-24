@@ -25,12 +25,12 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-4 col-sm-12 mt-1">
-                        <select class="form-control select2bs4" asp-for="@Model.UserID" asp-items="@Model.userOptions"></select>
+                        <select id="UserID" class="form-control select2bs4" asp-for="@Model.UserID" asp-items="@Model.userOptions"></select>
                     </div>
 
                     <div class="col-md-8 col-sm-12 mt-1">
                         <div class="d-flex justify-content-between align-items-center">
-                            <button id="reloadButton" type="button" class="btn btn-success btn-large" style="flex-basis:20%;" onclick="onReloadGrid('listFeatureRole')">
+                            <button id="searchButton" type="button" class="btn btn-success btn-large" style="flex-basis:20%;" onclick="onSearchUserDigitalShopRole()">
                                 <i class="fas fa-search h5 m-0 p-0"></i>
                             </button>
                             <button id="initButton" type="button" class="btn btn-primary btn-large" style="flex-basis:20%;" onclick="onInitDigitalShopRole()">
@@ -44,7 +44,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <button id="initButton" type="button" class="btn btn-primary btn-large" style="flex-basis:20%;" onclick="onInitFeatureRole()">
+                            <button id="initButton" type="button" class="btn btn-primary btn-large" style="flex-basis:20%;" onclick="onSaveChange()">
                                 <i class="fas fa-save h5 m-0 p-0"></i>
                             </button>
                         </div>
@@ -63,7 +63,7 @@
             </div>
         </div>
         <div class="card-body" style="height:700px;">
-            <div id="listFeatureRole" style="height:700px;"></div>
+            <div id="listDigitalShopRole" style="height:700px;"></div>
         </div>
     </div>
 </section>
@@ -72,18 +72,23 @@
 <script src="~/LTEplugins/select2/js/select2.full.min.js"></script>
 <script>
 
-    let featureRoles = [];
-    let features = [];
+    let digitalShopRoles = [];
+    let digitalShops = [];
 
     $(document).ready(() => {
         $('.select2bs4').select2({
             theme: 'bootstrap4'
         });
+
+        $("#UserID").on('change', () => {
+            $("#searchButton").trigger('click');
+        });
+
         $.ajax({
-            url: "@Url.Action("GetAllAsyncToList","Feature")",
+            url: "@Url.Action("GetAllAsyncToList","DigitalShop")",
             success: (respone) => {
                 console.log(respone);
-                features = respone;
+                digitalShops = respone;
             }
         }).done(() => {
             renderGrid();
@@ -91,7 +96,7 @@
     });
 
     function renderGrid() {
-        $("#listFeatureRole").jsGrid({
+        $("#listDigitalShopRole").jsGrid({
             height: "100%",
             width: "100%",
             paging: true,
@@ -102,7 +107,7 @@
             pageNavigatorPrevText: "...",
             editing: true,
             autoload: true,
-            data: featureRoles,
+            data: digitalShopRoles,
             inserting: true,
             deleteConfirm: "Bạn Có Chắc Muốn Xóa",
             reloadAfterSubmit: true,
@@ -112,44 +117,58 @@
                 insertItem: function (item) {
                     $.ajax({
                         type: "POST",
-                        url: '@Url.Action("Create","FeatureRole")',
+                        url: '@Url.Action("Create","DigitalShopRole")',
                         data: item
                     }).done(function (respone) {
                         console.log(respone);
                         $.notify(respone.note, respone.messageType);
-                        $("#reloadButton").trigger('click');
+                        $("#searchButton").trigger('click');
                     });
                 },
                 updateItem: function (item) {
                     $.ajax({
                         type: "POST",
-                        url: '@Url.Action("Update","FeatureRole")',
+                        url: '@Url.Action("Update","DigitalShopRole")',
                         data: item
                     }).done(function (respone) {
                         console.log(respone);
                         $.notify(respone.note, respone.messageType);
-                        $("#reloadButton").trigger('click');
                     });
                 },
                 deleteItem: function (item) {
                     $.ajax({
                         type: "POST",
-                        url: '@Url.Action("Delete","FeatureRole")',
+                        url: '@Url.Action("Delete","DigitalShopRole")',
                         data: item
                     }).done(function (respone) {
                         console.log(respone);
                         $.notify(respone.note, respone.messageType);
-                        $("#reloadButton").trigger('click');
+                        $("#searchButton").trigger('click');
                     });
                 }
             },
 
             fields: [
                 { name: "id", type: "number", title: "Id", with: 100, editing: false, inserting: false },
-                { name: "featureID", type: "select", title: "Tên Chức Năng", items: features, valueField: "id", textField: "name", with:300 },
+                { name: "digitalShopID", type: "select", title: "Shop Thương Mại Điện Tử", items: digitalShops, valueField: "id", textField: "name", with:300 },
                 { name: "isAllow", type: "checkbox", title:"Truy Cập" , with:300 },
                 { type: "control" }
             ]
+        });
+    }
+
+    function onSearchUserDigitalShopRole() {
+         $.ajax({
+            type: 'GET',
+            url: '@Url.Action("GetDigitalShopByUserID","DigitalShopRole")',
+            data: {
+                UserID: $("#UserID").children("option:selected").val(),
+            },
+            success: (respone) => {
+                digitalShopRoles = respone;
+                console.log(digitalShopRoles);
+                renderGrid();
+            }
         });
     }
 
@@ -157,10 +176,31 @@
         $.ajax({
             type: 'GET',
             url: '@Url.Action("InitializeUserDigitalShopRole","DigitalShopRole")',
+            data: {
+                UserID: $("#UserID").children("option:selected").val()
+            },
             success: (respone) => {
-                featureRoles = respone;
-                console.log(featureRoles);
+                digitalShopRoles = respone;
+                console.log(digitalShopRoles);
                 renderGrid();
+            }
+        });
+    }
+
+    function onSaveChange() {
+        console.log(document.getElementById('checkboxPrimary3').checked);
+        $.ajax({
+            type: 'POST',
+            datatype: "JSON",
+            url: '@Url.Action("SaveChange","DigitalShopRole")',
+            data: {
+                userDigitalShopRoles: digitalShopRoles,
+                isAllowAll: document.getElementById('checkboxPrimary3').checked,
+            },
+            success: (respone) => {
+                serviceTicketRoles = respone;
+                console.log(serviceTicketRoles);
+                $("#searchButton").trigger('click');
             }
         });
     }

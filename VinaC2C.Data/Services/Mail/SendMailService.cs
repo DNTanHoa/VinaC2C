@@ -4,9 +4,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Mail;
 using System.Net;
-using VinaC2C.Data.Services.Mail.Interface;
 
-namespace VinaC2C.Data.Services.Mail
+namespace VinaC2C.Data.Services
 {
     public class SendMailService : ISendMailService
     {

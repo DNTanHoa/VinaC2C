@@ -1,0 +1,163 @@
+﻿
+@{
+    ViewData["Title"] = "Cửa Hàng Cá Nhân";
+    Layout = "~/Views/Shared/_AdminLTELayout.cshtml";
+}
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Thống Kê Cửa Hàng</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Quản Lý Shop</a></li>
+                    <li class="breadcrumb-item active">Cửa Hàng</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="row">
+        <!--TODO: Render Follow User Login-->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon btn btn-success text-white"><i class="fas fa-plus"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">
+                        <img src="~/images/shopee.png" width="100"/>
+                    </span>
+                    <span class="info-box-number">1 Cửa Hàng</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon btn btn-success text-white"><i class="fas fa-plus"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">
+                        <img src="~/images/lazada.png" width="100" />
+                    </span>
+                    <span class="info-box-number">1 Cửa Hàng</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon btn btn-success text-white"><i class="fas fa-plus"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">
+                        <img src="~/images/tiki.png" width="100"/>
+                    </span>
+                    <span class="info-box-number">1 Cửa Hàng</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon btn btn-success text-white"><i class="fas fa-plus"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">
+                        <img src="~/images/sendo.png" width="100" />
+                    </span>
+                    <span class="info-box-number">1 Cửa Hàng</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header container-fluid">
+            <div class="container-fluid">
+                <div class="row">
+                    <h3 class="card-title col-8 col-md-11 m-0 p-0 mt-2">Danh Sách Cửa Hàng</h3>
+                    <button id="reloadButton" type="button" class="btn btn-success col-4 col-md-1" onclick="onReloadGrid('listUnit')">
+                        <i class="fas fa-sync-alt h5 m-0 p-0"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body" style="height:700px;">
+            <div id="listUnit" style="height:700px;"></div>
+        </div>
+    </div>
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="~/LTEplugins/jsgrid/jsgrid.min.js"></script>
+<script>
+    $(function () {
+        $("#listUnit").jsGrid({
+            height: "100%",
+            width: "100%",
+            paging: true,
+            filtering: true,
+            autoload: true,
+            pagerFormat: "Trang: {first} {prev} {pages} {next} {last}    {pageIndex} of {pageCount}",
+            pagePrevText: "Trước",
+            pageNextText: "Tiếp",
+            pageNavigatorNextText: "...",
+            pageNavigatorPrevText: "...",
+            editing: true,
+            inserting: true,
+            reloadAfterSubmit: true,
+            pageSize: 20,
+            pageButtonCount: 5,
+            loadMessage: "Đang Tải....",
+            controller: {
+                loadData: function() {
+                    var d = $.Deferred();
+                    $.ajax({
+                        type:"POST",
+                        url: '@Url.Action("GetAllAsyncToList","Unit")'
+                    }).done(function (response) {
+                        console.log(response);
+                        d.resolve(response);
+                    });
+                    return d.promise();
+                },
+                insertItem: function (item) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("Create","Unit")',
+                        data: item
+                    }).done(function (respone) {
+                        console.log(respone);
+                        $(this).jqGrid().trigger('reloadGrid');
+                    });
+                },
+                updateItem: function (item) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("Update","Unit")',
+                        data: item
+                    }).done(function (respone) {
+                        console.log(respone);
+                        $(this).jqGrid().trigger('reloadGrid');
+                    });
+                },
+                deleteItem: function (item) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("Delete","Unit")',
+                        data: item
+                    }).done(function (respone) {
+                        console.log(respone);
+                        $(this).jqGrid().trigger('reloadGrid');
+                    });
+                }
+            },
+
+            fields: [
+                
+                { name: "name", type: "text", title:"Tên" , with:300 },
+                { name: "code", type: "text", title: "Mã Quản Lý", with: 200 },
+                { name: "note", type: "text", title:"Ghi Chú" , with:200 },
+                { name: "createDate", type: "text", title: "Ngày Tạo", with: 200, editing: false, inserting: false },
+                { name: "createUser", type: "text", title: "Người Tạo",with:300, editing: false, inserting: false },
+                { name: "updateDate", type: "text", title: "Ngày Sửa", with: 200, editing: false, inserting: false },
+                { name: "updateUser", type: "text", title: "Người Sửa", with: 300, editing: false, inserting: false },
+                { type: "control" }
+            ]
+        });
+    });
+</script>

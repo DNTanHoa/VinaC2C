@@ -1,15 +1,13 @@
-﻿using POSBlazor.Data.Services.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 
 using System.Threading.Tasks;
 using VinaC2C.Data.Context;
-using VinaC2C.Data.Services.Feature.Interface;
 using VinaC2C.Data.DataTransferObject;
 
-namespace VinaC2C.Data.Services.Feature
+namespace VinaC2C.Data.Services
 {
     public class FeatureRoleService : ServiceBase<Data.Models.FeatureRole>, IFeatureRoleService
     {

@@ -23,6 +23,9 @@ namespace VinaC2C.Data.Context
             builder.ApplyConfiguration(new DigitalShopRoleConfiguration());
             builder.ApplyConfiguration(new ServiceTicketConfiguration());
             builder.ApplyConfiguration(new ServiceTicketRoleConfiguration());
+            builder.ApplyConfiguration(new UnitConfiguration());
+            builder.ApplyConfiguration(new UnitConvertConfiguration());
+            builder.ApplyConfiguration(new UserShopConfiguration());
 
             base.OnModelCreating(builder);
         }
@@ -45,5 +48,8 @@ namespace VinaC2C.Data.Context
         public DbSet<DigitalShopRole> DigitalShopRoles { get; set; } 
         public DbSet<ServiceTicket> ServiceTickets { get; set; } 
         public DbSet<ServiceTicketRole> ServiceTicketRoles { get; set; } 
+        public DbSet<Unit> Units { get; set; } 
+        public DbSet<UnitConvert> UnitConverts { get; set; } 
+        public DbSet<UserShop> UserShops { get; set; } 
     }
 }

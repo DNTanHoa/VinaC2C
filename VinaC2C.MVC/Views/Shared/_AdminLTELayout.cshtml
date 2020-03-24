@@ -31,6 +31,38 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
             </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown user-menu">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <img src="~/images/user_avatar.png" class="user-image img-circle elevation-2" alt="Hình Ảnh Cá Nhân">
+                        <span class="d-none d-md-inline">Tên Người Dùng Là?</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
+                        <li class="user-header bg-primary">
+                            <img src="~/images/user_avatar.png" class="img-circle elevation-2" alt="User Image">
+                            <p>
+                                Người Dùng Hệ Thống
+                                <small>Thành Viên Từ @DateTime.Today.Year</small>
+                            </p>
+                        </li>
+                        <!-- Menu Body -->
+                        <li class="user-body">
+                            <div class="row">
+                                <div class="col-2"></div>
+                                <div class="text-center col-8">
+                                    Tài Khoản Dùng Thử
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+                        </li>
+                        <!-- Menu Footer-->
+                        <li class="user-footer">
+                            <a href="#" class="btn btn-default btn-flat">Đổi Mật Khẩu</a>
+                            <a asp-action="LogOut" asp-controller="User" class="btn btn-default btn-flat float-right">Thoát</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </nav>
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -72,7 +104,7 @@
             <!-- Control sidebar content goes here -->
         </aside>
         <footer class="main-footer mt-2">
-            <strong>Copyright &copy; @DateTime.Today.Year <a href="http://adminlte.io">VinaC2C Bảo Lưu Tất Cả Bản Quyền</a>.</strong>
+            <strong>Copyright &copy; @DateTime.Today.Year <a>VinaC2C Bảo Lưu Tất Cả Bản Quyền</a>.</strong>
         </footer>
         
     </div>

@@ -1,0 +1,138 @@
+﻿
+@{
+    ViewData["Title"] = "Bảng Đơn Vị Tính";
+    Layout = "~/Views/Shared/_AdminLTELayout.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Hệ Thống Chuyển Đổi Đơn Vị</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Cấu Hình</a></li>
+                    <li class="breadcrumb-item active">Chuyển Đổi Đơn Vị</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="card">
+        <div class="card-header container-fluid">
+            <div class="container-fluid">
+                <div class="row">
+                    <h3 class="card-title col-8 col-md-11 m-0 p-0 mt-2">Danh Mục Đơn Vị Tính</h3>
+                    <button id="reloadButton" type="button" class="btn btn-success col-4 col-md-1" onclick="onReloadGrid('listUnitConvert')">
+                        <i class="fas fa-sync-alt h5 m-0 p-0"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body" style="height:700px;">
+            <div id="listUnitConvert" style="height:700px;"></div>
+        </div>
+    </div>
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="~/LTEplugins/jsgrid/jsgrid.min.js"></script>
+<script>
+
+    let units = [];
+
+    $(document).ready(() => {
+        $.ajax({
+            url: "@Url.Action("GetAllAsyncToList","Unit")",
+            success: (respone) => {
+                console.log(respone);
+                units = respone;
+                renderGrid();
+            }
+        });
+    });
+
+    function renderGrid() {
+        $("#listUnitConvert").jsGrid({
+            height: "100%",
+            width: "100%",
+            paging: true,
+            filtering: true,
+            autoload: true,
+            pagerFormat: "Trang: {first} {prev} {pages} {next} {last}    {pageIndex} of {pageCount}",
+            pagePrevText: "Trước",
+            pageNextText: "Tiếp",
+            pageNavigatorNextText: "...",
+            pageNavigatorPrevText: "...",
+            editing: true,
+            inserting: true,
+            reloadAfterSubmit: true,
+            pageSize: 20,
+            pageButtonCount: 5,
+            loadMessage: "Đang Tải....",
+            controller: {
+                loadData: function() {
+                    var d = $.Deferred();
+                    $.ajax({
+                        type:"GET",
+                        url: '@Url.Action("GetAllAsyncToList","UnitConvert")'
+                    }).done(function (response) {
+                        console.log(response);
+                        d.resolve(response);
+                    });
+                    return d.promise();
+                },
+                insertItem: function (item) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("Create","UnitConvert")',
+                        data: item
+                    }).done(function (respone) {
+                        console.log(respone);
+                        $(this).jqGrid().trigger('reloadGrid');
+                    });
+                },
+                updateItem: function (item) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("Update","UnitConvert")',
+                        data: item
+                    }).done(function (respone) {
+                        console.log(respone);
+                        $(this).jqGrid().trigger('reloadGrid');
+                    });
+                },
+                deleteItem: function (item) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("Delete","UnitConvert")',
+                        data: item
+                    }).done(function (respone) {
+                        console.log(respone);
+                        $(this).jqGrid().trigger('reloadGrid');
+                    });
+                }
+            },
+
+            fields: [
+                
+                { name: "sourceUnit", type: "select", items:units, valueField: "id", textField: "name", title:"Từ Đơn Vị" , with:300 },
+                { name: "sourceCoefficient", type: "number", title: "Hệ Số", with: 200 },
+                { name: "destinationUnit", type: "select", items:units, valueField: "id", textField: "name", title: "Dến Đơn Vị", with: 200 },
+                { name: "destinationCoefficient", type: "text", title: "Hệ Số", with: 200 },
+                { type: "control" }
+            ]
+        });
+    }
+
+    function getUnits() {
+        $.ajax({
+            url: "@Url.Action("GetAllAsyncToList","Unit")",
+            success: (respone) => {
+                console.log(respone);
+                units = respone;
+            }
+        });
+    }
+</script>

@@ -92,11 +92,9 @@
                         Password: inputPassword
                     },
                     success: function (respone) {
-                        console.log(respone);
-                        console.log(respone.result);
-                        console.log(respone.message);
                         if (respone.result === 'Invalid') {
                             $("#loginResult").show();
+                            $("#loginResult").empty();
                             $("#loginResult").append(respone.message);
                         }
                         else if (respone.result === 'Valid') {

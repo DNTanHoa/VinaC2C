@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VinaC2C.Data.Models;
 
-namespace VinaC2C.Data.Services.Common
+namespace VinaC2C.Data.Services
 {
     public interface IServiceBase<TEntity> where TEntity : BaseModel
     {

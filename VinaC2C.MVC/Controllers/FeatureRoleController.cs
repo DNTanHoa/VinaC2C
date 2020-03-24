@@ -10,8 +10,7 @@ using Microsoft.AspNetCore.SignalR;
 using VinaC2C.Data.Context;
 using VinaC2C.Data.DataTransferObject;
 using VinaC2C.Data.Models;
-using VinaC2C.Data.Services.Feature;
-using VinaC2C.Data.Services.User;
+using VinaC2C.Data.Services;
 using VinaC2C.MVC.Models;
 using VinaC2C.MVC.ServerHub;
 using VinaC2C.Ultilities.AppInfor;
@@ -80,7 +79,7 @@ namespace VinaC2C.MVC.Controllers
                 else
                     return Json(new { messageType = "error", note = AppGlobal.UpdateFailMessage });
             }
-            return Json(new { messageType = "infor", note = AppGlobal.UpdateLocalMessage });
+            return Json(new { messageType = "info", note = AppGlobal.UpdateLocalMessage });
         }
 
         public JsonResult Delete(FeatureRole featureRole)
@@ -108,7 +107,6 @@ namespace VinaC2C.MVC.Controllers
             return Json(featureRoleService.InitializeUserFeatureRole(UserID));
         }
 
-        [AllowAnonymous]
         public JsonResult SaveChange(List<UserFeatureRole> userFeatureRoles = null, bool isAllowAll = false)
         {
             var featureRoles = userFeatureRoles.Select(item =>

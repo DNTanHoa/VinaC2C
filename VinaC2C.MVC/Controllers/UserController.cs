@@ -5,12 +5,11 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using POSBlazor.Data.Services.Common;
 using VinaC2C.Data.Context;
-using VinaC2C.Data.Services.Mail;
-using VinaC2C.Data.Services.User;
+using VinaC2C.Data.Services;
 using VinaC2C.MVC.Models;
 using VinaC2C.Ultilities.Helpers;
 
@@ -109,6 +108,13 @@ namespace VinaC2C.MVC.Controllers
             }
         }
 
+        public async Task<ActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index");
+        }
+
+        [Authorize]
         public ActionResult ListView()
         {
             return View();

@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using VinaC2C.Data.Context;
 using VinaC2C.Data.Models;
-using VinaC2C.Data.Services.DigitalShop;
-using VinaC2C.Data.Services.Feature;
-using VinaC2C.Data.Services.User;
+using VinaC2C.Data.Services;
 using VinaC2C.MVC.Models;
 using VinaC2C.MVC.ServerHub;
 using VinaC2C.Ultilities.AppInfor;
@@ -18,6 +17,7 @@ using VinaC2C.Ultilities.Extensions;
 
 namespace VinaC2C.MVC.Controllers
 {
+    [Authorize]
     public class ServiceTicketController : Controller
     {
         private readonly IWebHostEnvironment _environment;
@@ -49,7 +49,7 @@ namespace VinaC2C.MVC.Controllers
 
         public JsonResult Create(ServiceTicket service)
         {
-            service.Initialization(ObjectInitType.Insert, "");
+            service.Initialization(ObjectInitType.Insert, "", HttpContext);
             int result = serviceTicketService.Create(service);
             _hubContext.Clients.All.SendAsync("dataChangeNotification", null);
             if (result != 0)
@@ -60,7 +60,7 @@ namespace VinaC2C.MVC.Controllers
 
         public JsonResult Update(ServiceTicket service)
         {
-            service.Initialization(ObjectInitType.Update, "");
+            service.Initialization(ObjectInitType.Update, "", HttpContext);
             int result = serviceTicketService.Update(service.Id, service);
             _hubContext.Clients.All.SendAsync("dataChangeNotification", null);
             if (result != 0)

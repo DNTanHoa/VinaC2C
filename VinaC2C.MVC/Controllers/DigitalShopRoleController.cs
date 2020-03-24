@@ -8,9 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using VinaC2C.Data.Context;
 using VinaC2C.Data.DataTransferObject;
 using VinaC2C.Data.Models;
-using VinaC2C.Data.Services.DigitalShop;
-using VinaC2C.Data.Services.Feature;
-using VinaC2C.Data.Services.User;
+using VinaC2C.Data.Services;
 using VinaC2C.MVC.Models;
 using VinaC2C.Ultilities.AppInfor;
 using VinaC2C.Ultilities.Enums;
@@ -25,6 +23,7 @@ namespace VinaC2C.MVC.Controllers
         private readonly VinaC2CContext _context;
 
         public DigitalShopRoleService digitalShopRoleService;
+        
         public UserService userService;
 
         public DigitalShopRoleController(VinaC2CContext context, IWebHostEnvironment environment)
@@ -60,12 +59,16 @@ namespace VinaC2C.MVC.Controllers
 
         public JsonResult Update(DigitalShopRole role)
         {
-            role.Initialization(ObjectInitType.Update, "");
-            int result = digitalShopRoleService.Update(role.Id, role);
-            if (result != 0)
-                return Json(new { messageType = "success", note = AppGlobal.UpdateSuccessMessage });
-            else
-                return Json(new { messageType = "error", note = AppGlobal.UpdateFailMessage });
+            if(role.Id != 0)
+            {
+                role.Initialization(ObjectInitType.Update, "");
+                int result = digitalShopRoleService.Update(role.Id, role);
+                if (result != 0)
+                    return Json(new { messageType = "success", note = AppGlobal.UpdateSuccessMessage });
+                else
+                    return Json(new { messageType = "error", note = AppGlobal.UpdateFailMessage });
+            }
+            return Json(new { messageType = "info", note = AppGlobal.UpdateLocalMessage });
         }
 
         public JsonResult Delete(DigitalShopRole role)
@@ -77,14 +80,39 @@ namespace VinaC2C.MVC.Controllers
                 return Json(new { messageType = "error", note = AppGlobal.DeleteFailMessage });
         }
 
+        public JsonResult GetDigitalShopByUserID(int UserID)
+        {
+            return Json(digitalShopRoleService.GetDigitalShopByUserID(UserID));
+        }
+
         public JsonResult GetDigitalShopByUsername(string username)
         {
             return Json(digitalShopRoleService.GetDigitalShopByUsername(username));
         }
 
-        public JsonResult InitializeUserDigitalShopRole()
+        public JsonResult InitializeUserDigitalShopRole(Int64 UserID)
         {
-            return Json(digitalShopRoleService.InitializeUserDigitalShopRole());
+            return Json(digitalShopRoleService.InitializeUserDigitalShopRole(UserID));
+        }
+
+        public JsonResult SaveChange(List<UserDigitalShopRole> userĐigitalShopRoles = null, bool isAllowAll = false)
+        {
+            var digitalShopRoles = userĐigitalShopRoles.Select(item =>
+            {
+                var newDigitalShopRole = new Data.Models.DigitalShopRole
+                {
+                    DigitalShopID = item.DigitalShopID,
+                    UserID = item.UserID,
+                    IsAllow = item.IsAllow ? true : isAllowAll
+                };
+                newDigitalShopRole.Initialization(ObjectInitType.Insert, "", HttpContext);
+                return newDigitalShopRole;
+            }).ToList();
+            int result = digitalShopRoleService.SaveChange(digitalShopRoles);
+            if (result != 0)
+                return Json(new { messageType = "success", note = AppGlobal.UpdateSuccessMessage });
+            else
+                return Json(new { messageType = "error", note = AppGlobal.UpdateFailMessage });
         }
     }
 }

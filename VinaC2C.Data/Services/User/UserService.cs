@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using POSBlazor.Data.Services.Common;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,7 +9,7 @@ using VinaC2C.Data.DataTransferObject;
 using VinaC2C.Ultilities.AppInfor;
 using VinaC2C.Ultilities.Helpers;
 
-namespace VinaC2C.Data.Services.User
+namespace VinaC2C.Data.Services
 {
     public class UserService : ServiceBase<Data.Models.User>, IUserService
     {
